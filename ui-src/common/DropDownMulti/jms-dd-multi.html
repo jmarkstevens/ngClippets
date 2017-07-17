@@ -1,0 +1,22 @@
+<div class="Dropdown">
+  <div class="DropdownControl" (mousedown)="onOpenClose()" (touchend)="onOpenClose()">
+    <div>
+      <span *ngFor="let selected of selectedOptions; let i = index">
+        {{selected.label}}
+        <i class="fa fa-times-circle-o" (click)="onRemove(i)"></i>
+      </span>
+    </div>
+    <span>&nbsp;</span>
+    <span>
+      <i class="fa fa-angle-up fa-lg" *ngIf="isOpen; else closedBlock"></i>
+      <ng-template #closedBlock><i class="fa fa-angle-down fa-lg"></i></ng-template>
+    </span>
+  </div>
+  <div class="DropdownMenu" *ngIf="isOpen">
+    <div *ngFor="let selectable of selectableOptions; let i = index">
+      <span *ngIf="selectable.value; else elseBlock" class="DropdownOption" (click)="onSelect(i)">{{selectable.label}}</span>
+      <ng-template #elseBlock><hr /></ng-template>
+    </div>
+    <div class="closeDiv" (click)="onOpenClose()"><span>Close</span></div>
+  </div>
+</div>

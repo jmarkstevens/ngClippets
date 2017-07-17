@@ -1,0 +1,22 @@
+.AppCtrl {
+  background-color: transparent;
+  color: Khaki;
+  display: flex;
+  height: calc(100vh - 40px);
+  margin: 20px;
+  padding: 0;
+  text-align: left;
+  width: calc(100vw - 40px);
+}
+
+.treeColumn {
+  height: 100%;
+  margin: 0;
+  width: 30%;
+}
+
+.snipColumn {
+  height: 100%;
+  margin: 0;
+  width: 70%;
+}

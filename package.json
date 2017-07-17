@@ -1,0 +1,60 @@
+{
+  "name": "ngClippets",
+  "version": "1.0.0",
+  "description": "A simple angular project for managing snippets.",
+  "license": "MIT",
+  "main": "main.js",
+  "author": {
+    "name": "J Mark Stevens",
+    "email": "jmstevens@jmarkstevens.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jmarkstevens/ngClippets.git"
+  },
+  "scripts": {
+    "start": "electron .",
+    "ww": "webpack --progress --profile --colors --env.noMinimize --watch",
+    "nw": "webpack --progress --profile --colors --env.noMinimize",
+    "build": "webpack --progress --profile --colors --env.production"
+  },
+  "dependencies": {
+    "@angular-redux/store": "latest",
+    "@angular/common": "^4.0.0",
+    "@angular/compiler": "^4.0.0",
+    "@angular/core": "^4.0.0",
+    "@angular/platform-browser": "^4.0.0",
+    "@angular/platform-browser-dynamic": "^4.0.0",
+    "@types/angular": "^1.5.16",
+    "@types/node": "^6.0.45",
+    "lodash": "latest",
+    "redux": "latest",
+    "redux-logger": "latest",
+    "redux-thunk": "latest",
+    "traverse": "latest"
+  },
+  "devDependencies": {
+    "angular2-template-loader": "latest",
+    "awesome-typescript-loader": "latest",
+    "babel-core": "latest",
+    "babel-loader": "latest",
+    "babel-plugin-transform-decorators-legacy": "latest",
+    "babel-preset-angular2": "latest",
+    "babel-preset-es2015": "latest",
+    "babel-preset-stage-0": "latest",
+    "core-js": "latest",
+    "css-loader": "latest",
+    "extract-text-webpack-plugin": "latest",
+    "file-loader": "latest",
+    "html-loader": "latest",
+    "html-webpack-plugin": "latest",
+    "loader-utils": "latest",
+    "raw-loader": "latest",
+    "reflect-metadata": "latest",
+    "rxjs": "latest",
+    "style-loader": "latest",
+    "typescript": "latest",
+    "webpack": "latest",
+    "zone.js": "^0.8.4"
+  }
+}

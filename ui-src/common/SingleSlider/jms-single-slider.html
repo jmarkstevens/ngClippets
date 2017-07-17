@@ -1,0 +1,32 @@
+<div
+  class="rootDiv"
+  (mousemove)="onDragging($event)"
+  (mouseleave)="onDragStop()"
+  (mouseup)="onDragStop()"
+>
+  <div id="countSpacer" class="countSpacer" [style.height.em]="inData.height * .35"></div>
+  <div
+    id="countSty"
+    class="countSty"
+    (click)="onCountClick($event)"
+    [style.background-color]="inData.countColor"
+    [style.height.em]="inData.height * .3"
+  >
+    <div id="indexSpacer" class="indexSpacer" [style.height.em]="inData.height * .05"></div>
+    <div
+      id="indexSty"
+      class="indexSty"
+      [style.background-color]="inData.indexColor"
+      [style.height.em]="inData.height * .2"
+      [style.width.%]="percentage"
+    ></div>
+  </div>
+  <div
+    id="indexCircle"
+    class="indexCircle"
+    (mousedown)="onCircleMouseDown()"
+    [style.left.px]="indexLeft"
+  >
+    <span id="indexValue" class="indexValue">{{index}}</span>
+  </div>
+</div>

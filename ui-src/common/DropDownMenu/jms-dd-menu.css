@@ -1,0 +1,40 @@
+.Dropdown {position: relative;};
+
+.DropdownControl {
+  position: relative;
+  overflow: hidden;
+  background: transparent;
+  box-sizing: border-box;
+  cursor: default;
+  outline: none;
+  padding: 5px 5px;
+  text-align: right;
+  transition: all 200ms ease;
+  width: 100%;
+}
+
+.DropdownMenu {
+  background-color: #261a3b;
+  box-shadow: 0 1px 0 rgba(0; 0; 0; 0.06);
+  box-sizing: border-box;
+  font-size: .9em;
+  line-height: 150%;
+  margin-top: -1px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 8px 12px;
+  position: absolute;
+  right: 0px;
+  top: 100%;
+  z-index: 200;
+}
+
+.DropdownOption {
+  box-sizing: border-box;
+  color: #EEFFEE;
+  cursor: pointer;
+  display: block;
+}
+.DropdownOption:hover {
+  background-color: #4d3182;
+}

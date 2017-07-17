@@ -1,0 +1,17 @@
+.rootDiv {
+  color: yellow;
+  line-height: 16px;
+  padding: 0;
+  text-align: center;
+}
+
+.dotStyles {
+  width: 9px;
+  height: 9px;
+  margin: 7px;
+  padding: 0;
+  border-radius: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  cursor: pointer;
+}

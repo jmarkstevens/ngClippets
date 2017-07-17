@@ -1,0 +1,35 @@
+<div class='rootDiv'>
+  <sv-actions (onSnipCopy)="onSnipCopy()"></sv-actions>
+  <div id="snipsDiv" class="snipsDiv">
+    <div
+      id="snipRow"
+      class="snipRow"
+      *ngFor="let item of currentSnips; let i = index"
+      [ngStyle]="{'color': getSnipColor(i)}"
+    >
+      <span
+        id="noCopySpace"
+        class="noCopySpace"
+        (click)="noCopyClick(i)"
+        [ngStyle]="{'background-color': getSnipColor(i)}"
+      >&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      <span
+        id="snipSpan"
+        class="snipSpan"
+        (click)="snipClick(i)"
+      >{{item.snip}}</span>
+    </div>
+  </div>
+  <textarea
+    id="snipText"
+    class="snipText"
+    (change)="onSnipChange($event)"
+    [value]="currentSnip.snip"
+  ></textarea>
+  <textarea
+    id="commentText"
+    class="commentText"
+    (change)="onCommentChange($event)"
+    [value]="currentSnip.comment"
+  ></textarea>
+</div>

@@ -1,0 +1,14 @@
+<ng-template #menuTree let-menuList>
+  <div id="menuRoot" class="menuRoot" *ngFor="let item of menuList; let i = index">
+    <div id="listRow" class="listRow">
+      <img id="levelIcon" class="levelIcon" src="{{getIconBack(item)}}" (click)="iconClick(item)" />
+      <div id="titleDiv" class="titleDiv" (click)="titleClick(item)">
+        {{item.title}}
+      </div>
+    </div>
+    <div id="childrenDiv" class="childrenDiv" *ngIf="item.showChildren">
+      <ng-container *ngTemplateOutlet="menuTree; context:{$implicit: item.children}"></ng-container>
+    </div>
+  </div>
+</ng-template>
+<ng-container *ngTemplateOutlet="menuTree; context:{$implicit: menuList}"></ng-container>

@@ -1,0 +1,21 @@
+<div id="snipActions" class="snipActions">
+  <jms-button [btn]="btns.copySnip" (onBtnClicked)="copyClick()"></jms-button>
+  <span class="spacerSpanLg"></span>
+  <jms-button [btn]="btns.pasteSnip" (onBtnClicked)="clickHandler(btns.pasteSnip.buttonid)"></jms-button>
+  <span class="spacerSpanSm"></span>
+  <jms-button [btn]="btns.pasteBefore" (onBtnClicked)="clickHandler(btns.pasteBefore.buttonid)"></jms-button>
+  <span class="spacerSpanSm"></span>
+  <jms-button [btn]="btns.pasteAfter" (onBtnClicked)="clickHandler(btns.pasteAfter.buttonid)"></jms-button>
+  <span class="spacerSpanLg"></span>
+  <jms-button [btn]="btns.newSnip" (onBtnClicked)="clickHandler(btns.newSnip.buttonid)"></jms-button>
+  <span class="spacerSpanSm"></span>
+  <jms-button [btn]="btns.newBefore" (onBtnClicked)="clickHandler(btns.newBefore.buttonid)"></jms-button>
+  <span class="spacerSpanSm"></span>
+  <jms-button [btn]="btns.newAfter" (onBtnClicked)="clickHandler(btns.newAfter.buttonid)"></jms-button>
+  <span class="spacerSpanLg"></span>
+  <jms-button [btn]="btns.moveSnipUp" (onBtnClicked)="clickHandler(btns.moveSnipUp.buttonid)"></jms-button>
+  <span class="spacerSpanSm"></span>
+  <jms-button [btn]="btns.moveSnipDown" (onBtnClicked)="clickHandler(btns.moveSnipDown.buttonid)"></jms-button>
+  <span class="spacerSpanLg"></span>
+  <jms-button [btn]="btns.removeSnip" (onBtnClicked)="clickHandler(btns.removeSnip.buttonid)"></jms-button>
+</div>

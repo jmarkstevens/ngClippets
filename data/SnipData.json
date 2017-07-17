@@ -1,0 +1,2786 @@
+[
+  {
+    "nodeid": "1",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "15-06-02 07-35"
+      }
+    ]
+  },
+  {
+    "nodeid": "1.2",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "(function () {\n\t'use strict';\n\n\tvar currentPageOpenedFactory = function($rootScope) {\n\t\tvar pageNotOpened = true;\n\t\tvar currentPageName = '';\n\t\tvar nowOpened = function(pageName) {\n\t\t\tswitch (currentPageName) {\n\t\t\t\tcase 'page': $rootScope.$broadcast('pageNowClosed'); break;\n\t\t\t}\n\t\t\tvar pageOpened = function() {\n\t\t\t\t$rootScope.$broadcast('pageNowOpened');\n\t\t\t\tif (pageNotOpened) {\n\t\t\t\t\tpageNotOpened = false;\n\t\t\t\t\t$rootScope.$broadcast('pageFirstOpened');\n\t\t\t\t}\n\t\t\t};\n\t\t\tswitch (pageName) {\n\t\t\t\tcase 'page': pageOpened(); break;\n\t\t\t}\n\t\t\tcurrentPageName = pageName;\n\t\t};\n\t\t\n\t\tvar onFirstOpened = function(pageName, callBack) {\n\t\t\tswitch (pageName) {\n\t\t\t\tcase 'page': $rootScope.$on('pageFirstOpened', function() { callBack(); }); break;\n\t\t\t}\n\t\t};\n\t\t\n\t\tvar onNowOpened = function(pageName, callBack) {\n\t\t\tswitch (pageName) {\n\t\t\t\tcase 'page': $rootScope.$on('pageNowOpened', function() { callBack(); }); break;\n\t\t\t}\n\t\t};\n\t\t\n\t\tvar onNowClosed = function(pageName, callBack) {\n\t\t\tswitch (pageName) {\n\t\t\t\tcase 'page': $rootScope.$on('pageNowClosed', function() { callBack(); }); break;\n\t\t\t}\n\t\t};\n\t\t\n\t\treturn { nowOpened: nowOpened, onFirstOpened: onFirstOpened, onNowOpened: onNowOpened, onNowClosed: onNowClosed };\n\t};\n\tcurrentPageOpenedFactory.$inject = ['$rootScope'];\n\tangular.module('SpamProtester').factory('currentPageOpened', currentPageOpenedFactory);\n})();"
+      },
+      {
+        "comment": "",
+        "snip": "var onFirstOpened = function() {};\ncurrentPageOpened.onFirstOpened('', onFirstOpened);\nvar onNowOpened = function(){};\ncurrentPageOpened.onNowOpened('', onNowOpened);\nvar onNowClosed = function(){};\ncurrentPageOpened.onNowClosed('', onNowClosed);"
+      },
+      {
+        "comment": "",
+        "snip": "angular.module('PalmInfo')"
+      },
+      {
+        "comment": "",
+        "snip": "})();"
+      },
+      {
+        "comment": "",
+        "snip": "(function () {"
+      },
+      {
+        "comment": "",
+        "snip": "angular.module('SpamProtester')"
+      },
+      {
+        "comment": "",
+        "snip": "angular.module('Clippets')"
+      },
+      {
+        "comment": "",
+        "snip": "TICK_LENGTH = 15\n\nwhilePressed = ($parse, $interval) ->\n  restrict: \"A\"\n\n  link: (scope, elem, attrs) ->\n    action = $parse(attrs.whilePressed)\n    intervalPromise = null\n\n    bindWhilePressed = ->\n      elem.on('mousedown', beginAction)\n\n    bindEndAction = ->\n      elem.on('mouseup', endAction)\n      elem.on('mouseleave', endAction)\n\n    unbindEndAction = ->\n      elem.off('mouseup', endAction)\n      elem.off('mouseleave', endAction)\n\n    beginAction = (e) ->\n      e.preventDefault()\n      tickAction()\n      intervalPromise = $interval(tickAction, TICK_LENGTH)\n      bindEndAction()\n\n    endAction = ->\n      $interval.cancel(intervalPromise)\n      unbindEndAction()\n\n    tickAction = ->\n      action(scope)\n\n    bindWhilePressed()"
+      },
+      {
+        "comment": "",
+        "snip": "(function () {\n'use strict';\n\n})();"
+      }
+    ]
+  },
+  {
+    "nodeid": "1.3",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "<!doctype html>\n<html lang=\"en\">\n  <head>\n  \t<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/common.css\" />\n  \t<link rel=\"stylesheet\" type=\"text/css\" href=\"../css/prices.css\" />\n  </head>\n  <body id=\"EmbedBody\">\n\n  </body>\n</html>\n"
+      },
+      {
+        "comment": "",
+        "snip": "&nbsp;"
+      }
+    ]
+  },
+  {
+    "nodeid": "1.4",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "<i class=\"fa fa-camera-retro\"></i>"
+      },
+      {
+        "comment": "button with image lines up wrong without this",
+        "snip": "* { outline: none; }\n"
+      },
+      {
+        "comment": "",
+        "snip": ".TreeButtonImg {\n\tpadding: 0px;\n\tvertical-align: top;\n}"
+      },
+      {
+        "comment": "hex color opacity",
+        "snip": "100% — FF\n95% — F2\n90% — E6\n85% — D9\n80% — CC\n75% — BF\n70% — B3\n65% — A6\n60% — 99\n55% — 8C\n50% — 80\n45% — 73\n40% — 66\n35% — 59\n30% — 4D\n25% — 40\n20% — 33\n15% — 26\n10% — 1A\n5% — 0D\n0% — 00"
+      }
+    ]
+  },
+  {
+    "nodeid": "1.6",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "gulp.task('updateApp', function() {\n\tgulp.src('./js/**/*')\n\t.pipe(gulp.dest('/Applications/Clippets.app/Contents/Resources/app/js/'));\n\tgulp.src('./ui/dist/**/*')\n\t.pipe(gulp.dest('/Applications/Clippets.app/Contents/Resources/app/ui/dist/'));\n\tgulp.src(['./main.js'])\n\t.pipe(gulp.dest('/Applications/Clippets.app/Contents/Resources/app/'));\n});"
+      }
+    ]
+  },
+  {
+    "nodeid": "10",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "16-05933-MM7"
+      },
+      {
+        "comment": "",
+        "snip": "California"
+      },
+      {
+        "comment": "",
+        "snip": "Southern"
+      },
+      {
+        "comment": "",
+        "snip": "Geeta Christina Stevens"
+      },
+      {
+        "comment": "",
+        "snip": "Janaka Mark Stevens"
+      },
+      {
+        "comment": "",
+        "snip": "Janaka Mark Stevens\n30509 Alta Mesa Dr.\nValley Center, CA  92082\n760-715-7234"
+      },
+      {
+        "comment": "",
+        "snip": "30509 alta mesa dr., valley center, ca, 92082"
+      },
+      {
+        "comment": "",
+        "snip": "30509 Alta Mesa Dr\nValley Center CA  92082"
+      },
+      {
+        "comment": "",
+        "snip": "Residence located at;\n"
+      },
+      {
+        "comment": "Court clerk",
+        "snip": "619-557-5620"
+      },
+      {
+        "comment": "",
+        "snip": "UPDATE AgLibraryKeyword SET includeParents = 0 WHERE includeParents = 1"
+      },
+      {
+        "comment": "",
+        "snip": "CSD 1099\n106Sum\n106A/B - J\n106Dec\n107\n108\n122A-1\nSupporting Documentation Cover Sheet and applicable documents\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "10.11",
+    "snips": []
+  },
+  {
+    "nodeid": "12",
+    "snips": []
+  },
+  {
+    "nodeid": "12.13",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "forever start js/server.js\n\nYou should be able to see it here\n\nps axl | grep node\n\nAnd here\n\nforever list\n\nYou can kill it using\n\nforever stop 0\n\nWhere 0 is the index of your code in the forever list."
+      },
+      {
+        "comment": "",
+        "snip": "# Note the new setup script name for Node.js v0.12\r\ncurl -sL https://deb.nodesource.com/setup_0.12 | sudo bash -\r\n\r\n# Then install with:\r\nsudo apt-get install -y nodejs"
+      },
+      {
+        "comment": "",
+        "snip": "rm -rf directory"
+      },
+      {
+        "comment": "",
+        "snip": "one off\n\n$ PORT=80 node js/server.js\n\nMore permanently:\n\n$ export PORT=80\n$ node app.js"
+      },
+      {
+        "comment": "",
+        "snip": "nvm alias default node"
+      }
+    ]
+  },
+  {
+    "nodeid": "12.14",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "git submodule init\ngit submodule update"
+      },
+      {
+        "comment": "",
+        "snip": "git submodule add https://github.com/calitek/palminfo-assets.git ui/dist/assets"
+      },
+      {
+        "comment": "",
+        "snip": "git init\ngit add .\ngit commit -m \"first commit\"\ngit remote add origin https://github.com/calitek/palminfo-assets.git\ngit push -u origin master"
+      },
+      {
+        "comment": "",
+        "snip": "git clone https://github.com/calitek/palminfo\n"
+      },
+      {
+        "comment": "",
+        "snip": "git clone https://github.com/calitek/BasicID\n"
+      },
+      {
+        "comment": "",
+        "snip": "git clone https://github.com/calitek/ProjectNotes\n"
+      },
+      {
+        "comment": "",
+        "snip": "git clone https://github.com/calitek/CodeViewer\n"
+      },
+      {
+        "comment": "",
+        "snip": "git clone https://github.com/calitek/ReactPatterns\n"
+      },
+      {
+        "comment": "",
+        "snip": "git clone https://github.com/calitek/Clippets\n"
+      },
+      {
+        "comment": "",
+        "snip": "git clone https://github.com/calitek/BasicStarterWP\n"
+      },
+      {
+        "comment": "",
+        "snip": "git clone https://github.com/calitek/BasicStarter\n"
+      },
+      {
+        "comment": "",
+        "snip": "sudo nano ~/.gitconfig\n\nYou can use the follow commands to add in the required information.\n\ngit config --global user.name \"calitek\"\ngit config --global user.email github@calitek.com\n\nYou can see all of your settings with this command:\n\ngit config --list"
+      },
+      {
+        "comment": "",
+        "snip": "git config --global user.name \"calitek\""
+      },
+      {
+        "comment": "",
+        "snip": "git config --global user.email github@calitek.com"
+      },
+      {
+        "comment": "",
+        "snip": "git init\n"
+      },
+      {
+        "comment": "",
+        "snip": "git add .\n"
+      },
+      {
+        "comment": "",
+        "snip": "git commit -m \"first commit\"\n"
+      },
+      {
+        "comment": "",
+        "snip": "git remote add origin https://github.com/calitek/PalmInfo.git"
+      },
+      {
+        "comment": "",
+        "snip": "git push -u origin master"
+      },
+      {
+        "comment": "",
+        "snip": "git config --global credential.helper store"
+      }
+    ]
+  },
+  {
+    "nodeid": "76.15",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "https://www.digitalocean.com/community/tutorials/how-to-setup-a-firewall-with-ufw-on-an-ubuntu-and-debian-cloud-server"
+      },
+      {
+        "comment": "",
+        "snip": "apt install ufw"
+      },
+      {
+        "comment": "",
+        "snip": "ufw allow out to any port 53"
+      },
+      {
+        "comment": "",
+        "snip": "ufw allow 80/tcp"
+      },
+      {
+        "comment": "",
+        "snip": "ufw allow 443/tcp"
+      },
+      {
+        "comment": "",
+        "snip": "ufw allow ssh"
+      },
+      {
+        "comment": "",
+        "snip": "ufw allow 1194"
+      },
+      {
+        "comment": "SQL Server",
+        "snip": "ufw allow 1433"
+      },
+      {
+        "comment": "",
+        "snip": "ufw allow 3306"
+      },
+      {
+        "comment": "",
+        "snip": "ufw default allow outgoing"
+      },
+      {
+        "comment": "",
+        "snip": "ufw default deny incoming"
+      },
+      {
+        "comment": "",
+        "snip": "ufw disable\n"
+      },
+      {
+        "comment": "",
+        "snip": "ufw enable"
+      },
+      {
+        "comment": "",
+        "snip": "ufw status verbose"
+      },
+      {
+        "comment": "",
+        "snip": "ufw allow 7500/tcp"
+      }
+    ]
+  },
+  {
+    "nodeid": "1.17",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "sudo npm install -g gulp node-gyp nodemon react-tools"
+      },
+      {
+        "comment": "",
+        "snip": "npm outdated --depth 0"
+      },
+      {
+        "comment": "",
+        "snip": "npm outdated -g --depth 0"
+      },
+      {
+        "comment": "",
+        "snip": "npm ls -depth 0"
+      },
+      {
+        "comment": "",
+        "snip": "npm ls -g -depth 0"
+      },
+      {
+        "comment": "",
+        "snip": "npm install -g gulp"
+      },
+      {
+        "comment": "",
+        "snip": "npm install -g node-gyp pm2"
+      },
+      {
+        "comment": "",
+        "snip": "npm install -g bower"
+      },
+      {
+        "comment": "",
+        "snip": "sudo npm update -g"
+      },
+      {
+        "comment": "",
+        "snip": "sudo npm update -g npm"
+      }
+    ]
+  },
+  {
+    "nodeid": "10.18",
+    "snips": []
+  },
+  {
+    "nodeid": "19",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "open -na \"Google Chrome\" --args --user-data-dir=\"/Users/janaka/Janak-gmail-chrome\""
+      },
+      {
+        "comment": "",
+        "snip": "find . -name \"*.js\" -exec bash -c 'mv \"$1\" \"${1%.js}\".ts' - '{}' \\;\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "19.20",
+    "snips": [
+      {
+        "comment": "no sudo",
+        "snip": "ruby -e \"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)\""
+      },
+      {
+        "comment": "",
+        "snip": "brew tap homebrew/dupes"
+      },
+      {
+        "comment": "",
+        "snip": "brew install libiconv"
+      },
+      {
+        "comment": "add spaces to dock",
+        "snip": "defaults write com.apple.dock persistent-apps -array-add '{\"tile-type\"=\"spacer-tile\";}'; killall Dock "
+      },
+      {
+        "comment": "",
+        "snip": "sudo npm install -g gulp node-gyp nodemon eslint babel-eslint eslint-plugin-babel eslint-plugin-react "
+      },
+      {
+        "comment": "Syncovery types/limits",
+        "snip": "node_modules\n.DS_Store\n.BridgeSort\n.git"
+      }
+    ]
+  },
+  {
+    "nodeid": "22",
+    "snips": []
+  },
+  {
+    "nodeid": "22.23",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "On mobile, when picture pushes minus/plus buttons to bottom the other buttons don't work.\n"
+      },
+      {
+        "comment": "add a 'j' button to the actions",
+        "snip": "jump button on expanded page"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.24",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "move tree item to new branch"
+      },
+      {
+        "comment": "",
+        "snip": "drag and drop tree items"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.25",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "15-08-21 08-06"
+      }
+    ]
+  },
+  {
+    "nodeid": "26",
+    "snips": []
+  },
+  {
+    "nodeid": "26.27",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "sc.exe create MongoDB binPath= \"\\\"C:\\Program Files\\MongoDB\\Server\\3.0\\bin\\mongod.exe\\\" --service --config=\\\"P:\\MongoDB\\mongod.conf\\\"\" DisplayName= \"MongoDB 3.0\" start= \"auto\""
+      },
+      {
+        "comment": "",
+        "snip": "cmd /k -new_console:t:\"Trials\":d:K:\\Projects\\Trials"
+      },
+      {
+        "comment": "",
+        "snip": "Projects::Trials"
+      },
+      {
+        "comment": "",
+        "snip": "BasicStarter"
+      },
+      {
+        "comment": "",
+        "snip": "BasicStarterWP"
+      },
+      {
+        "comment": "",
+        "snip": "CaliPlay"
+      },
+      {
+        "comment": "",
+        "snip": "Calitek"
+      },
+      {
+        "comment": "",
+        "snip": "OccupySpam"
+      },
+      {
+        "comment": "",
+        "snip": "ProjectNotes"
+      },
+      {
+        "comment": "",
+        "snip": "Trials"
+      }
+    ]
+  },
+  {
+    "nodeid": "1.28",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cmd /k gulp -new_console:t:\"PalmList ui\":d:K:\\Projects\\PalmList\\ui\n\ncmd /k npm start -new_console:t:\"PalmList server\":d:K:\\Projects\\PalmList"
+      },
+      {
+        "comment": "",
+        "snip": "cmd /k gulp -new_console:t:\"Identify ui\":d:K:\\Projects\\Identify\\ui\n\ncmd /k gulp -new_console:t:\"Identify run\":d:K:\\Projects\\Identify"
+      },
+      {
+        "comment": "",
+        "snip": "cmd /k gulp -new_console:t:\"Spamsit ui\":d:K:\\Projects\\SpamProtester\\server\\ui\n\ncmd /k npm start -new_console:t:\"Spamsit server\":d:K:\\Projects\\SpamProtester\\server\n\ncmd /k gulp -new_console:t:\"Spamsit run\":d:K:\\Projects\\SpamProtester\\client"
+      },
+      {
+        "comment": "",
+        "snip": "cmd /k gulp -new_console:t:\"PalmInfo ui\":d:K:\\Projects\\PalmInfo\\ui\r\n\r\ncmd /k npm start -new_console:t:\"PalmInfo server\":d:K:\\Projects\\PalmInfo"
+      },
+      {
+        "comment": "",
+        "snip": "cmd /k gulp -new_console:t:\"Clippets ui\":d:K:\\Projects\\Clippets\\ui\n\ncmd /k gulp -new_console:t:\"Clippets run\":d:K:\\Projects\\Clippets"
+      }
+    ]
+  },
+  {
+    "nodeid": "76.29",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "after ssh to port 22"
+      },
+      {
+        "comment": "",
+        "snip": "apt update\n"
+      },
+      {
+        "comment": "",
+        "snip": "apt upgrade"
+      },
+      {
+        "comment": "",
+        "snip": "apt install npm\n"
+      },
+      {
+        "comment": "",
+        "snip": "apt install git\n"
+      },
+      {
+        "comment": "",
+        "snip": "apt install ufw\n"
+      },
+      {
+        "comment": "",
+        "snip": "apt install nginx\n"
+      },
+      {
+        "comment": "",
+        "snip": "apt install nano"
+      },
+      {
+        "comment": "",
+        "snip": ""
+      },
+      {
+        "comment": "",
+        "snip": "apt-get install build-essential libssl-dev\n"
+      },
+      {
+        "comment": "",
+        "snip": "curl https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash\n"
+      },
+      {
+        "comment": "",
+        "snip": "nvm ls-remote\n"
+      },
+      {
+        "comment": "",
+        "snip": "nvm install node\n"
+      },
+      {
+        "comment": "",
+        "snip": "nvm install --lts=argon\n"
+      },
+      {
+        "comment": "",
+        "snip": "nvm alias default 6.9.0\n"
+      },
+      {
+        "comment": "",
+        "snip": ""
+      },
+      {
+        "comment": "",
+        "snip": "ufw default deny incoming\n"
+      },
+      {
+        "comment": "",
+        "snip": "ufw default allow outgoing\n"
+      },
+      {
+        "comment": "",
+        "snip": "ufw allow ssh\n"
+      },
+      {
+        "comment": "",
+        "snip": "ufw allow 80/tcp\n"
+      },
+      {
+        "comment": "",
+        "snip": "ufw allow 443/tcp\n"
+      },
+      {
+        "comment": "",
+        "snip": "ufw allow out to any port 53\n"
+      },
+      {
+        "comment": "",
+        "snip": "ufw enable\n"
+      },
+      {
+        "comment": "",
+        "snip": "npm install -g pm2\n"
+      },
+      {
+        "comment": "",
+        "snip": "npm install -g node-gyp\n"
+      },
+      {
+        "comment": "",
+        "snip": "mkdir /var/www\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /var/www\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "12.30",
+    "snips": [
+      {
+        "comment": "if called for",
+        "snip": "apt update"
+      },
+      {
+        "comment": "",
+        "snip": "apt upgrade"
+      },
+      {
+        "comment": "",
+        "snip": "cd /var/www/palminfo"
+      },
+      {
+        "comment": "",
+        "snip": "cd /var/www/PalmInfo"
+      },
+      {
+        "comment": "",
+        "snip": "cd /var/www/BasicID"
+      },
+      {
+        "comment": "",
+        "snip": "cd /var/www/CodeView/CodeViewer"
+      },
+      {
+        "comment": "",
+        "snip": "forever stop 0"
+      },
+      {
+        "comment": "update node",
+        "snip": "nvm install stable"
+      },
+      {
+        "comment": "",
+        "snip": "npm update -g"
+      },
+      {
+        "comment": "",
+        "snip": "rm -rf node_modules"
+      },
+      {
+        "comment": "",
+        "snip": "git pull"
+      },
+      {
+        "comment": "",
+        "snip": "npm install --production"
+      },
+      {
+        "comment": "",
+        "snip": "export PORT=80"
+      },
+      {
+        "comment": "",
+        "snip": "export PORT38=80"
+      },
+      {
+        "comment": "",
+        "snip": "export CODEVIEWERPORT=5300"
+      },
+      {
+        "comment": "",
+        "snip": "forever start js/server.js"
+      },
+      {
+        "comment": "",
+        "snip": "forever restart js/server.js"
+      },
+      {
+        "comment": "check that it is running",
+        "snip": "forever list"
+      },
+      {
+        "comment": "",
+        "snip": "forever start forever124.json"
+      },
+      {
+        "comment": "",
+        "snip": "pm2 start js/server.js"
+      }
+    ]
+  },
+  {
+    "nodeid": "19.31",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "⌘ \tCommand key\n⌃ \tControl key\n⌥ \tOption key\n⇧ \tShift Key\n⇪ \tCaps Lock\nfn \tFunction Key"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.32",
+    "snips": []
+  },
+  {
+    "nodeid": "22.32.35",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.12/Basic"
+      },
+      {
+        "comment": "",
+        "snip": "this is the default new"
+      },
+      {
+        "comment": "",
+        "snip": "this is a new after"
+      },
+      {
+        "comment": "default",
+        "snip": "this is a default paste"
+      },
+      {
+        "comment": "",
+        "snip": "this is a paste after"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.12/ReFluxWebSocket"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.13/Basic"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.13/ReFluxWebSocket"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14/ReFluxElectron"
+      }
+    ]
+  },
+  {
+    "nodeid": "10.36",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "stress biofeedback project\nSpire, pip, muse  $150, $180, $300\n\nJim Cahill, San Diego"
+      }
+    ]
+  },
+  {
+    "nodeid": "26.38",
+    "snips": []
+  },
+  {
+    "nodeid": "27",
+    "snips": []
+  },
+  {
+    "nodeid": "27.28",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "git remote add origin https://github.com/calitek/Clippets.git"
+      },
+      {
+        "comment": "",
+        "snip": "git push -u origin master"
+      }
+    ]
+  },
+  {
+    "nodeid": "27.43",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "git remote add origin https://github.com/calitek/ReactPatterns.git"
+      },
+      {
+        "comment": "",
+        "snip": "git push -u origin master"
+      }
+    ]
+  },
+  {
+    "nodeid": "27.44",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "git remote add origin https://github.com/calitek/SpamProtester.git"
+      },
+      {
+        "comment": "",
+        "snip": "git push -u origin master"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.45",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "update AgLibraryKeyword set includeParents = 0"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.32.48",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "props: piclist, piclist folder, intro page, hide and close function"
+      },
+      {
+        "comment": "",
+        "snip": "state: index, list length, has intro"
+      },
+      {
+        "comment": "",
+        "snip": "actions: close, next, prev, intro, settings"
+      },
+      {
+        "comment": "",
+        "snip": "settings: orientation, color, film strip on/off"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.32.49",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14/Basic"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14/D3"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14/DragAndDrop"
+      },
+      {
+        "comment": "tab key moves on with changes saved\n",
+        "snip": "one more time with some change with esc"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14/ReFluxElectron"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14/ReFluxPages"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14/ReFluxSuperAgent"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14/ReFluxWebSocket"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14/ThirdParty/GoogleMaps"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14/ThirdParty/Radium"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14/WindowEvents"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14/WindowObject"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14.Common/Buttons"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14.Common/DropDown"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14.Common/FormInputs"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14.Common/List"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14.Common/ProgressBar"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14.Common/RangeSlider"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14.Common/Tooltip"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14.Common/TreeView"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14.Webpack/Basic"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14.Webpack/ReFluxElectron"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14.Webpack/ReFluxSuperAgent"
+      },
+      {
+        "comment": "",
+        "snip": "cd K:/Projects/ReactPatterns/React.14.Webpack/ReFluxWebSocket"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.32.50",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ReactPatterns/React.15/Basic"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ReactPatterns/React.15/BasicIsometric"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/ReactPatterns/React.15/GoogleMaps\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ReactPatterns/React.15/ReduxElectron"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ReactPatterns/React.15/ReduxFetch"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ReactPatterns/React.15/ReduxPages"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ReactPatterns/React.15/ReduxSocketIO"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ReactPatterns/React.Common"
+      }
+    ]
+  },
+  {
+    "nodeid": "12.51",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "server {\n  listen 80;\n\n  server_name test.palminfo.org;\n\n  location / {\n      proxy_pass http://localhost:3700;\n      proxy_http_version 1.1;\n      proxy_set_header Upgrade $http_upgrade;\n      proxy_set_header Connection 'upgrade';\n      proxy_set_header Host $host;\n      proxy_cache_bypass $http_upgrade;\n  }\n  location /basicid {\n      proxy_pass http://localhost:4500;\n      proxy_http_version 1.1;\n      proxy_set_header Upgrade $http_upgrade;\n      proxy_set_header Connection 'upgrade';\n      proxy_set_header Host $host;\n      proxy_cache_bypass $http_upgrade;\n  }\n}"
+      },
+      {
+        "comment": "",
+        "snip": "server {\n    server_name test.palminfo.org;\n    location / {\n        proxy_set_header Upgrade $http_upgrade;\n        proxy_set_header Connection \"upgrade\";\n        proxy_http_version 1.1;\n        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n        proxy_set_header Host $host;\n        proxy_pass http://localhost:3700;\n    }\n    location /basicid {\n        proxy_set_header Upgrade $http_upgrade;\n        proxy_set_header Connection \"upgrade\";\n        proxy_http_version 1.1;\n        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n        proxy_set_header Host $host;\n        proxy_pass http://localhost:4500;\n    }\n}"
+      },
+      {
+        "comment": "",
+        "snip": "server {\n  server_name ng.palminfo.org www.palminfo.org palminfo.org;\n  location / {\n      proxy_set_header Upgrade $http_upgrade;\n      proxy_set_header Connection \"upgrade\";\n      proxy_http_version 1.1;\n      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n      proxy_set_header Host $host;\n      proxy_pass http://localhost:3700;\n  }\n}\n"
+      },
+      {
+        "comment": "",
+        "snip": "server {\n  server_name basicid.palminfo.org;\n  location / {\n      proxy_set_header Upgrade $http_upgrade;\n      proxy_set_header Connection \"upgrade\";\n      proxy_http_version 1.1;\n      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n      proxy_set_header Host $host;\n      proxy_pass http://localhost:4500;\n  }\n}"
+      },
+      {
+        "comment": "",
+        "snip": "sudo nano /etc/nginx/sites-available/palminfo.org"
+      },
+      {
+        "comment": "",
+        "snip": "sudo nano /etc/nginx/sites-available/basicid.palminfo.org"
+      },
+      {
+        "comment": "",
+        "snip": "sudo ln -s /etc/nginx/sites-available/palminfo.org /etc/nginx/sites-enabled/palminfo.org"
+      },
+      {
+        "comment": "",
+        "snip": "sudo ln -s /etc/nginx/sites-available/basicid.palminfo.org /etc/nginx/sites-enabled/basicid.palminfo.org"
+      },
+      {
+        "comment": "",
+        "snip": "sudo rm /etc/nginx/sites-enabled/default"
+      },
+      {
+        "comment": "",
+        "snip": "sudo service nginx restart"
+      },
+      {
+        "comment": "",
+        "snip": "nano /etc/nginx/sites-available/calitek.com"
+      },
+      {
+        "comment": "",
+        "snip": "server {\n  server_name test.codeviewer.calitek.com;\n  location / {\n      proxy_set_header Upgrade $http_upgrade;\n      proxy_set_header Connection \"upgrade\";\n      proxy_http_version 1.1;\n      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n      proxy_set_header Host $host;\n      proxy_pass http://localhost:3800;\n  }\n}"
+      },
+      {
+        "comment": "",
+        "snip": "sudo ln -s /etc/nginx/sites-available/calitek.com /etc/nginx/sites-enabled/calitek.com"
+      },
+      {
+        "comment": "",
+        "snip": "sudo ln -s /etc/nginx/sites-available/kykas.com /etc/nginx/sites-enabled/kykas.com"
+      },
+      {
+        "comment": "",
+        "snip": "sudo nano /etc/nginx/sites-available/bergstromgardens.org"
+      },
+      {
+        "comment": "",
+        "snip": "server {\n  server_name www.bergstrompalmgardens.org bergstrompalmgardens.org www.bergstromgardens.org bergstromgardens.org;\n  location / {\n      proxy_set_header Upgrade $http_upgrade;\n      proxy_set_header Connection \"upgrade\";\n      proxy_http_version 1.1;\n      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n      proxy_set_header Host $host;\n      proxy_pass http://localhost:3700;\n  }\n}\n"
+      },
+      {
+        "comment": "",
+        "snip": "sudo ln -s /etc/nginx/sites-available/bergstromgardens.org /etc/nginx/sites-enabled/bergstromgardens.org"
+      },
+      {
+        "comment": "",
+        "snip": "multi.calitek.com"
+      },
+      {
+        "comment": "",
+        "snip": "cd /etc/nginx/sites-available"
+      },
+      {
+        "comment": "",
+        "snip": "rm -f  /etc/nginx/sites-available"
+      },
+      {
+        "comment": "",
+        "snip": "nano /etc/nginx/sites-available/multi.calitek.com"
+      },
+      {
+        "comment": "",
+        "snip": "ln -s /etc/nginx/sites-available/multi.calitek.com /etc/nginx/sites-enabled/multi.calitek.com"
+      },
+      {
+        "comment": "",
+        "snip": "server {\n  server_name ng.palminfo.org www.palminfo.org palminfo.org www.bergstrompalmgardens.org bergstrompalmgardens.org www.bergstromgardens.org bergstromgardens.org;\n  location / {\n      proxy_set_header Upgrade $http_upgrade;\n      proxy_set_header Connection \"upgrade\";\n      proxy_http_version 1.1;\n      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n      proxy_set_header Host $host;\n      proxy_pass http://localhost:3700;\n  }\n}\nserver {\n  server_name calitek.com example.calitek.com www.calitek.com kykas.com example.kykas.com www.kykas.com;\n  location / {\n      proxy_set_header Upgrade $http_upgrade;\n      proxy_set_header Connection \"upgrade\";\n      proxy_http_version 1.1;\n      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n      proxy_set_header Host $host;\n      proxy_pass http://localhost:3800;\n  }\n}\nserver {\n  server_name basicid.palminfo.org;\n  location / {\n      proxy_set_header Upgrade $http_upgrade;\n      proxy_set_header Connection \"upgrade\";\n      proxy_http_version 1.1;\n      proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;\n      proxy_set_header Host $host;\n      proxy_pass http://localhost:4500;\n  }\n}\n"
+      },
+      {
+        "comment": "",
+        "snip": "ln -s /etc/nginx/sites-available/multi.calitek.com /etc/nginx/sites-enabled/multi.calitek.com"
+      },
+      {
+        "comment": "",
+        "snip": "service nginx restart"
+      }
+    ]
+  },
+  {
+    "nodeid": "12.52",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "138.68.55.247"
+      }
+    ]
+  },
+  {
+    "nodeid": "53",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "Freelance Application Developer for Web, Desktop, Tablet and Phone. Run in a browser and/or as a native application."
+      },
+      {
+        "comment": "",
+        "snip": "http://stackoverflow.com/users/5248398/j-mark-stevens"
+      },
+      {
+        "comment": "",
+        "snip": "Business Software Applications (SO Cal)\nData Driven / Complex ERP Web Portals for Various Business Applications\n\nIntroduction:\n\nHighly Experienced IT Software Designer, Developer and Consultant, based in Southern California, seeking new Freelance Projects both Web and PC applications..\nHere are some of the Types of Projects and applications I can build for your business\n\nCustom software (Web, Mobile, Database and PC) applications.\nScheduling Application\nInventory Management\nBudget Controls\nSupply Chain Management\nCosting Calculators\nConfiguration Applications\nEstimators\nQuote Management\nAsset Tracking\nWork Order Management\nTask And Checklist Application\nThese apps will...\n\nSave your Operation Costs\nEnable you to Complete your projects quicker and more efficiently\nSave you Labor and Payroll Costs\nEnable You to Grow your business without increasing your costs\nI assure you Very Reasonable Rates, Timely Delivery and a Robust Product which will save you operating costs and quick Return on Investment\n\n"
+      },
+      {
+        "comment": "",
+        "snip": "Experienced Web/Desktop Software Developer and Consultant\n\nHello,\n\nI have over 20 years of experience as a software developer/consultant. I specialize in full stack data intensive line of business\nand web applications. By full stack I mean the front end (UI) and the back end (database and web server).\n\nMy current development stack is Javascript, React or React-Native, HTML5, CSS3 and Node JS.\nI have worked with data (design and query) from SQLite, MySql, SQL Server, PostgreSQL, MongoDB, Excel, EXIF (from picture files)\n, JSON and restful sources.\nMy DevOps experience includes deploying Nginx, MongoDB and MySql on Ubuntu running multiple instances of Node JS.\n\nI am very good at understanding business requirements and identifying ways to maximize technology benefits.\n\n\nYou can view my resume and examples at http://jmarkstevens.com."
+      },
+      {
+        "comment": "",
+        "snip": "Experienced Web/Desktop Software Developer and Consultant\n\nHi, my name is Mark Stevens and I have over 20 years of experience as a software developer/consultant. \nI specialize in full stack data intensive line of business\nand web applications. By full stack I mean the front end (UI) and the back end (database and web server).\n\nMy current development stack is Javascript, React or React-Native, HTML5, CSS3 and Node JS.\nI have worked with data (design and query) from SQLite, MySql, SQL Server, PostgreSQL, MongoDB, Excel, EXIF (from picture files)\n, JSON and restful sources.\nMy DevOps experience includes deploying Nginx, MongoDB and MySql on Ubuntu running multiple instances of Node JS.\n\nI am very good at understanding business requirements and identifying ways to maximize technology benefits.\n\n\nYou can view my resume and examples at http://jmarkstevens.com."
+      },
+      {
+        "comment": "",
+        "snip": "Chela Gala Charity Productions, Inc.\nGerry Hazelton\nPresident\n760-670-8026 "
+      },
+      {
+        "comment": "",
+        "snip": "Edith Bergstrom\n650-322-7256"
+      },
+      {
+        "comment": "",
+        "snip": "Gary Wood\nPlantSigns\nOwner\n801-900-1182"
+      }
+    ]
+  },
+  {
+    "nodeid": "76.54",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "apt-get update"
+      },
+      {
+        "comment": "root user pw janak",
+        "snip": "apt-get install mysql-server"
+      },
+      {
+        "comment": "",
+        "snip": "mysql_secure_installation"
+      },
+      {
+        "comment": "",
+        "snip": "mysql -u root -p"
+      },
+      {
+        "comment": "",
+        "snip": "create database testdb;"
+      },
+      {
+        "comment": "",
+        "snip": "grant all on testdb.* to 'testuser'@'localhost' identified by 'password';"
+      },
+      {
+        "comment": "",
+        "snip": "grant all on testdb1.* to 'testuser'@'%' identified by 'password';"
+      },
+      {
+        "comment": "",
+        "snip": "FLUSH PRIVILEGES;"
+      },
+      {
+        "comment": "",
+        "snip": "EXIT;"
+      },
+      {
+        "comment": "configure for remote",
+        "snip": "sudo nano /etc/mysql/my.cnf"
+      },
+      {
+        "comment": "comment out in my.cnf",
+        "snip": "bind-address           = 127.0.0.1\nskip-networking"
+      },
+      {
+        "comment": "",
+        "snip": "service mysql restart"
+      },
+      {
+        "comment": "",
+        "snip": "CREATE USER 'janaka'@'localhost' IDENTIFIED BY 'kali108';"
+      },
+      {
+        "comment": "",
+        "snip": "CREATE USER 'mstevens'@'localhost' IDENTIFIED BY 'sinet108';"
+      },
+      {
+        "comment": "",
+        "snip": "CREATE USER 'janaka'@'%' IDENTIFIED BY 'kali108';"
+      },
+      {
+        "comment": "",
+        "snip": "CREATE USER 'mstevens'@'%' IDENTIFIED BY 'sinet108';"
+      },
+      {
+        "comment": "",
+        "snip": "GRANT ALL ON *.* TO 'janaka'@'localhost';"
+      },
+      {
+        "comment": "",
+        "snip": "GRANT ALL ON *.* TO 'mstevens'@'localhost';"
+      },
+      {
+        "comment": "",
+        "snip": "GRANT ALL ON *.* TO 'janaka'@'%';"
+      },
+      {
+        "comment": "",
+        "snip": "GRANT ALL ON *.* TO 'mstevens'@'%';"
+      },
+      {
+        "comment": "",
+        "snip": "FLUSH PRIVILEGES;"
+      },
+      {
+        "comment": "",
+        "snip": "EXIT;"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.32.55",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "nodemon -w __tests__ -w ./src -e js,jsx -x npm test"
+      }
+    ]
+  },
+  {
+    "nodeid": "53.56",
+    "snips": []
+  },
+  {
+    "nodeid": "53.57",
+    "snips": []
+  },
+  {
+    "nodeid": "53.58",
+    "snips": []
+  },
+  {
+    "nodeid": "53.59",
+    "snips": []
+  },
+  {
+    "nodeid": "53.59.60",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /var/www/BasicID\n"
+      },
+      {
+        "comment": "",
+        "snip": "export BASICIDPORT=5100"
+      }
+    ]
+  },
+  {
+    "nodeid": "53.59.61",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /var/www/Clippets\n"
+      },
+      {
+        "comment": "",
+        "snip": "export CLIPPETSPORT=5200"
+      }
+    ]
+  },
+  {
+    "nodeid": "53.59.62",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /var/www/CodeViewer\n"
+      },
+      {
+        "comment": "",
+        "snip": "export CODEVIEWERPORT=5300"
+      },
+      {
+        "comment": "",
+        "snip": "test.codeviewer.calitek.com"
+      }
+    ]
+  },
+  {
+    "nodeid": "53.59.63",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /var/www/PalmInfo\n"
+      },
+      {
+        "comment": "",
+        "snip": "export PALMINFOPORT=5400"
+      }
+    ]
+  },
+  {
+    "nodeid": "53.59.75",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "apt update"
+      },
+      {
+        "comment": "",
+        "snip": "apt upgrade"
+      },
+      {
+        "comment": "restart",
+        "snip": "sudo shutdown -r now"
+      },
+      {
+        "comment": "",
+        "snip": "ls  /etc/nginx/sites-available"
+      },
+      {
+        "comment": "",
+        "snip": "rm -f  /etc/nginx/sites-available/default"
+      },
+      {
+        "comment": "",
+        "snip": "nano /etc/nginx/sites-available/multi.calitek.com"
+      },
+      {
+        "comment": "",
+        "snip": "ln -s /etc/nginx/sites-available/multi.calitek.com /etc/nginx/sites-enabled/multi.calitek.com"
+      },
+      {
+        "comment": "",
+        "snip": "service nginx restart\n"
+      },
+      {
+        "comment": "",
+        "snip": ""
+      },
+      {
+        "comment": "",
+        "snip": "pm2 start js/server.js"
+      },
+      {
+        "comment": "",
+        "snip": "pm2 restart js/server.js"
+      },
+      {
+        "comment": "",
+        "snip": ""
+      },
+      {
+        "comment": "",
+        "snip": "rm -rf node_modules"
+      },
+      {
+        "comment": "",
+        "snip": "npm install --production"
+      },
+      {
+        "comment": "",
+        "snip": ""
+      },
+      {
+        "comment": "",
+        "snip": "cd /var/www"
+      },
+      {
+        "comment": "",
+        "snip": "pm2 start pm2List.json"
+      },
+      {
+        "comment": "",
+        "snip": "pm2 stop pm2List.json"
+      },
+      {
+        "comment": "",
+        "snip": "pm2 restart pm2List.json"
+      },
+      {
+        "comment": "",
+        "snip": "pm2 list"
+      },
+      {
+        "comment": "",
+        "snip": "pm2 save"
+      },
+      {
+        "comment": "",
+        "snip": "pm2 startup ubuntu"
+      }
+    ]
+  },
+  {
+    "nodeid": "76",
+    "snips": [
+      {
+        "comment": "list with permissions",
+        "snip": "ls -l"
+      },
+      {
+        "comment": "set root password",
+        "snip": "sudo passwd"
+      },
+      {
+        "comment": "",
+        "snip": ""
+      },
+      {
+        "comment": "Authorize login as root",
+        "snip": "nano /etc/ssh/sshd_config"
+      },
+      {
+        "comment": "comment out",
+        "snip": "#PermitRootLogin without-password"
+      },
+      {
+        "comment": "add",
+        "snip": " PermitRootLogin yes "
+      },
+      {
+        "comment": "",
+        "snip": "service ssh restart"
+      },
+      {
+        "comment": "",
+        "snip": ""
+      },
+      {
+        "comment": "restart",
+        "snip": "shutdown -r now"
+      },
+      {
+        "comment": "full shutdown, only for test server",
+        "snip": "shutdown -h now\n"
+      },
+      {
+        "comment": "get version",
+        "snip": "lsb_release -a"
+      },
+      {
+        "comment": "logout ",
+        "snip": "exit"
+      }
+    ]
+  },
+  {
+    "nodeid": "76.77",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "Install on Ubuntu"
+      },
+      {
+        "comment": "",
+        "snip": "apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 0C49F3730359A14518585931BC711F9BA15703C6"
+      },
+      {
+        "comment": "",
+        "snip": "echo \"deb [ arch=amd64,arm64 ] http://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/3.4 multiverse\" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list"
+      },
+      {
+        "comment": "",
+        "snip": "apt-get update"
+      },
+      {
+        "comment": "",
+        "snip": "apt-get install -y mongodb-org"
+      },
+      {
+        "comment": "",
+        "snip": "Start - Stop"
+      },
+      {
+        "comment": "",
+        "snip": "service mongod start"
+      },
+      {
+        "comment": "",
+        "snip": "service mongod stop"
+      },
+      {
+        "comment": "",
+        "snip": "service mongod restart"
+      },
+      {
+        "comment": "",
+        "snip": "Config"
+      },
+      {
+        "comment": "",
+        "snip": "nano /etc/mongod.conf"
+      },
+      {
+        "comment": "Data",
+        "snip": "/var/lib/mongodb"
+      },
+      {
+        "comment": "",
+        "snip": "less /var/log/mongodb/mongod.log"
+      }
+    ]
+  },
+  {
+    "nodeid": "76.78",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "Install"
+      },
+      {
+        "comment": "",
+        "snip": "cd ~"
+      },
+      {
+        "comment": "",
+        "snip": "curl -sL https://deb.nodesource.com/setup_6.x -o nodesource_setup.sh"
+      },
+      {
+        "comment": "",
+        "snip": "bash nodesource_setup.sh"
+      },
+      {
+        "comment": "",
+        "snip": "apt install nodejs"
+      },
+      {
+        "comment": "",
+        "snip": "apt install build-essential"
+      },
+      {
+        "comment": "",
+        "snip": ""
+      },
+      {
+        "comment": "",
+        "snip": "older installs"
+      },
+      {
+        "comment": "",
+        "snip": "curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash -"
+      },
+      {
+        "comment": "",
+        "snip": "curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -"
+      },
+      {
+        "comment": "",
+        "snip": "curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -"
+      },
+      {
+        "comment": "",
+        "snip": "apt-get install -y nodejs"
+      },
+      {
+        "comment": "",
+        "snip": "apt-get install -y nodejs"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.79",
+    "snips": []
+  },
+  {
+    "nodeid": "22.79.80",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/NodejsPatterns/DataAccess/Json"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/NodejsPatterns/DataAccess/MongoDB"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/NodejsPatterns/DataAccess/MySql"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/NodejsPatterns/DataAccess/SQLite"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/NodejsPatterns/DataAccess/SqlServer"
+      }
+    ]
+  },
+  {
+    "nodeid": "10.82",
+    "snips": [
+      {
+        "comment": "let sit 15 minutes",
+        "snip": "Guton free crapes\n\n1 cup brown rice\n1 cup white rice\n1/2 cup tapioca\n1/2 tbsp baking powder\n1/2 tbsp vanilla\n4 eggs\n2 1/2 tbsp butter\n2 salad spoons almond meal\n1 tbsp cream\n1 1/2 water\n"
+      },
+      {
+        "comment": "",
+        "snip": "Corn bread\n\n1 cup corn meal\n.5 cup polenta\n.5 cup garbonzo flour\n1.5 tsp baking powder\n.5 tsp salt\n2-3 tbsp sugar\n\n3 eggs\n1.5 cup milk\n3 tbsp butter\n\ncook at 400 for 35 minutes"
+      }
+    ]
+  },
+  {
+    "nodeid": "76.83",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "***use sudo if not root"
+      },
+      {
+        "comment": "",
+        "snip": "nano /etc/ssh/sshd_config"
+      },
+      {
+        "comment": "",
+        "snip": "Match group plantsigns\n    ChrootDirectory /var/www/Plantsigns\n    X11Forwarding no\n    AllowTcpForwarding no\n    ForceCommand internal-sftp"
+      },
+      {
+        "comment": "",
+        "snip": "sudo /etc/init.d/ssh restart"
+      },
+      {
+        "comment": "",
+        "snip": "sudo addgroup plantsigns"
+      },
+      {
+        "comment": "",
+        "snip": "sudo adduser gwood"
+      },
+      {
+        "comment": "gwood psword",
+        "snip": "iwfPo3XKdCg1WxEJeibG"
+      },
+      {
+        "comment": "",
+        "snip": "sudo usermod -G plantsigns gwood"
+      },
+      {
+        "comment": "",
+        "snip": "sudo chown root:root /var/www/Plantsigns"
+      },
+      {
+        "comment": "Do this if gwood has trouble uploading changes. Find out why overwrite doesn't work.",
+        "snip": "sudo chown gwood:plantsigns /var/www/Plantsigns/ui-dist -R"
+      },
+      {
+        "comment": "",
+        "snip": "find /var/www/Plantsigns/ui-dist -type d -exec chmod 775 {} +"
+      },
+      {
+        "comment": "",
+        "snip": "find /var/www/Plantsigns/ui-dist -type f -exec chmod 664 {} +"
+      }
+    ]
+  },
+  {
+    "nodeid": "53.59.84",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /var/www/JMarkStevens\n"
+      },
+      {
+        "comment": "",
+        "snip": "export CALITEKPORT=5000"
+      }
+    ]
+  },
+  {
+    "nodeid": "53.59.85",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /var/www/MastersDarshan\n"
+      },
+      {
+        "comment": "",
+        "snip": "export MASTERSDARSHANPORT=6700"
+      }
+    ]
+  },
+  {
+    "nodeid": "53.59.86",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /var/www/Plantsigns\n"
+      },
+      {
+        "comment": "",
+        "snip": "export PLANTSIGNSPORT=6600"
+      }
+    ]
+  },
+  {
+    "nodeid": "1.87",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "ref={(ref) => { this.refName = ref; }}"
+      },
+      {
+        "comment": "stateless functional component",
+        "snip": "const Text = ({ children }) => \n  <p>{children}</p>\n\nconst Text = ({children}) => {\n  return (\n    <p>{children}</p>\n  )\n}\n\nText.propTypes = { children: React.PropTypes.string };\nText.defaultProps = { children: 'Hello World!' };\n\nexport default Text"
+      },
+      {
+        "comment": "",
+        "snip": "parseInt(e.target.id)"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.23.88",
+    "snips": [
+      {
+        "comment": "run after syncing pics from shared working. Then proof in word.",
+        "snip": "yarn run captions"
+      },
+      {
+        "comment": "",
+        "snip": "yarn run imagelist"
+      },
+      {
+        "comment": "",
+        "snip": "yarn run palmlist"
+      },
+      {
+        "comment": "",
+        "snip": "yarn run prepinfo"
+      },
+      {
+        "comment": "",
+        "snip": "yarn run filterlist"
+      },
+      {
+        "comment": "201702",
+        "snip": "Genus count:    35\nSpecies count:  111\nParts count:    2244"
+      }
+    ]
+  },
+  {
+    "nodeid": "53.59.89",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /var/www/jmsExamples\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.91",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ReactNativePatterns/JCommon"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.91.93",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ReactNativePatterns/General/Basic"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ReactNativePatterns/General/ListViewer"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ReactNativePatterns/General/ReduxFetch"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ReactNativePatterns/General/UsingNavigator"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ReactNativePatterns/General/UsingNavigatorBar"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ReactNativePatterns/JCommon"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ReactNativePatterns/nativeComponents"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ReactNativePatterns/nativeAPI"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.94",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/wwwProjects/BasicID"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/wwwProjects/MastersDarshan"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/wwwProjects/PlantSigns"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/wwwProjects/SpamSit"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.95",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "JMarkStevens.com"
+      },
+      {
+        "comment": "",
+        "snip": "PlantInfo.org"
+      },
+      {
+        "comment": "",
+        "snip": "PalmList mobile"
+      },
+      {
+        "comment": "",
+        "snip": "IRS"
+      },
+      {
+        "comment": "",
+        "snip": "Nationstar harp"
+      },
+      {
+        "comment": "",
+        "snip": "Finger String mobile"
+      },
+      {
+        "comment": "",
+        "snip": "Stress Not mobile"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.95.96",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "NonProfit corp"
+      },
+      {
+        "comment": "",
+        "snip": "501(c3)"
+      },
+      {
+        "comment": "",
+        "snip": "Website"
+      }
+    ]
+  },
+  {
+    "nodeid": "1.97",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "/* eslint-disable */"
+      },
+      {
+        "comment": "",
+        "snip": "/* eslint-enable */"
+      }
+    ]
+  },
+  {
+    "nodeid": "10.98",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "quercetin"
+      },
+      {
+        "comment": "",
+        "snip": "feverfew"
+      },
+      {
+        "comment": "",
+        "snip": "bilberry"
+      },
+      {
+        "comment": "",
+        "snip": "women's 45"
+      },
+      {
+        "comment": "",
+        "snip": "stress shield"
+      },
+      {
+        "comment": "",
+        "snip": "white willow bark"
+      },
+      {
+        "comment": "",
+        "snip": "rutin"
+      },
+      {
+        "comment": "",
+        "snip": "vitamin d-3"
+      },
+      {
+        "comment": "",
+        "snip": "vitamin c"
+      },
+      {
+        "comment": "",
+        "snip": "salmon oil"
+      }
+    ]
+  },
+  {
+    "nodeid": "53.99",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "J. Mark Stevens Consulting"
+      },
+      {
+        "comment": "",
+        "snip": "Web and Desktop Application Developer"
+      },
+      {
+        "comment": "",
+        "snip": "Seasoned front and back end software developer with over 20 years of experience creating web and database applications. Skilled at designing, coding, testing, and implementing software solutions. Specialization with web applications that work on a desktop as well as tablet and smartphone. Focus on small business or department level database-driven software that integrates all functionality for a domain."
+      },
+      {
+        "comment": "",
+        "snip": "While writing clean and well organized code for ease of understanding and maintainability, I deliver creative solutions that work."
+      },
+      {
+        "comment": "",
+        "snip": "Experienced Web/Desktop Software Developer and Consultant"
+      },
+      {
+        "comment": "",
+        "snip": "Hi, my name is Mark Stevens and I have over 20 years of experience as a software developer/consultant. I specialize in full stack data intensive line of business and web applications. By full stack I mean the front end (UI) and the back end (database and web server)."
+      },
+      {
+        "comment": "",
+        "snip": "My current development stack is Javascript, React or React-Native, HTML5, CSS3 and Node JS. I have worked with data (design and query) from SQLite, MySql, SQL Server, PostgreSQL, MongoDB, Excel, EXIF (from picture files), JSON and restful sources. My DevOps experience includes deploying Nginx, MongoDB and MySql on Ubuntu running multiple instances of Node JS."
+      },
+      {
+        "comment": "",
+        "snip": "I am very good at understanding business requirements and identifying ways to maximize technology benefits."
+      },
+      {
+        "comment": "",
+        "snip": "You can view my resume and examples at http://jmarkstevens.com."
+      },
+      {
+        "comment": "",
+        "snip": "http://jmarkstevens.com"
+      },
+      {
+        "comment": "",
+        "snip": "https://www.linkedin.com/in/j-mark-stevens-1653a516/"
+      },
+      {
+        "comment": "",
+        "snip": "http://stackoverflow.com/users/5248398/j-mark-stevens?tab=profile"
+      },
+      {
+        "comment": "",
+        "snip": "https://github.com/jmarkstevens"
+      }
+    ]
+  },
+  {
+    "nodeid": "10.100",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "sears model 417.97922701"
+      }
+    ]
+  },
+  {
+    "nodeid": "1.101",
+    "snips": [
+      {
+        "comment": "use brew",
+        "snip": "curl -o- -L https://yarnpkg.com/install.sh | bash"
+      },
+      {
+        "comment": "use yarn with angular/cli",
+        "snip": "ng set --global packageManager=yarn"
+      }
+    ]
+  },
+  {
+    "nodeid": "102",
+    "snips": [
+      {
+        "comment": "Public ip internet connection",
+        "snip": "72.214.63.217"
+      },
+      {
+        "comment": "",
+        "snip": "POST /manage/access/login/index HTTP/1.1\r\nHost: 68.15.17.244\r\nConnection: keep-alive\r\nContent-Length: 65\r\nCache-Control: max-age=0\r\nOrigin: https://68.15.17.244\r\nUpgrade-Insecure-Requests: 1\r\nUser-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2924.87 Safari/537.36\r\nContent-Type: application/x-www-form-urlencoded\r\nAccept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8\r\nReferer: https://68.15.17.244/manage/access/login/\r\nAccept-Encoding: gzip, deflate, br\r\nAccept-Language: en-US,en;q=0.8\r\nCookie: en-visit=23adb4078c132e2a037f5ba74b5c9ad443ef8790; session_id=3d22f7c5be71f8148fbda6318ec63f916e2f07c1\nForm Data\nview parsed\nemi_username=mstevens%40merlincsi.com&emi_password=sinet099%29dev"
+      },
+      {
+        "comment": "",
+        "snip": "\nconst Test = '/manage/commands//?api_key=989bed52-71bc-4a83-ae12-827b476f61b6';\napiTest(Test, 'Test');\n"
+      },
+      {
+        "comment": "",
+        "snip": "authenticity_token:\"PINv69fNKo3xkazwpteCG92DFjaV82UhESMr8NmEBfQ=\""
+      },
+      {
+        "comment": "",
+        "snip": "https://jmarkstevens.freshdesk.com/support/login?authenticity_token=PINv69fNKo3xkazwpteCG92DFjaV82UhESMr8NmEBfQ=&user_session[email]=jms@kykas.com&user_session[password]=sinet099)fresh"
+      },
+      {
+        "comment": "",
+        "snip": "https://jmarkstevens.freshdesk.com/support/login?utf8=%E2%9C%93&authenticity_token=Db11wAQ6A1bwn%2BcG080CsE4705dKTUVB7PPwzCIGk6I%3D&user_session%5Bemail%5D=mstevens%40merlincsi.com&user_session%5Bpassword%5D=sinet099%29fresh&user_session%5Bremember_me%5D=0&user_session%5Bremember_me%5D=1"
+      },
+      {
+        "comment": "Public IP Endian Switchboard",
+        "snip": "68.15.17.244"
+      }
+    ]
+  },
+  {
+    "nodeid": "102.103",
+    "snips": []
+  },
+  {
+    "nodeid": "102.103.104",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "Weeks 1 - \n"
+      }
+    ]
+  },
+  {
+    "nodeid": "102.103.104.105",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "Friday 03-17\n\n8hrs\n\nSetup workstation at client office. Meeting with Tom to review initial focus. Aquire and review SiMetrics projects."
+      },
+      {
+        "comment": "",
+        "snip": "Saturday and Sunday 03-18/19\n\n4hrs\n\nReview Merlin documentation for SiMetrics as well as SiMetrics projects."
+      },
+      {
+        "comment": "",
+        "snip": "Monday 03-20\n\n8hrs\n\nReview SiMetrics projects. Meet with Tom for overview of Sinet/SiMetrics. Document SiMetrics v6.1 solution.\n"
+      },
+      {
+        "comment": "",
+        "snip": "Tuesday 03-21\n\n8hrs\n\nPrepare Ubuntu server installation, including MongoDB, MySql, Node.js and ufw firewall. Meet with Tom and Endian. Meet with Tom and SiSense. Document Sinet Portal and SiMetrics overview. Setup SinetPortal project. Download MerlinCSI website.\n"
+      },
+      {
+        "comment": "",
+        "snip": "Wednesday 03-22\n\n8hrs\n\nDocs for Sinet Portal, study SiSense docs, setup Sinet Data project, study Endian docs. Review support ticketing systems. Review OAuth2 libraries for Sinet Portal. Review google maps and charting libraries for Sinet Portal."
+      },
+      {
+        "comment": "",
+        "snip": "Thursday 03-23\n\n8.5hrs\n\nSetup tryout project for chart and map testing. Work on map samples. Setup and test react-router. Review next steps with Tom. \n"
+      },
+      {
+        "comment": "",
+        "snip": "Friday 03-24\n\n7.5 hrs\n\nSinet icon for branding Endian. SDS docs for Sinet Portal and SiMetrics Data server. Overview docs for Sinet and SiMetrics. Visio docs for Sinet and equipment map for production and dev servers.\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "102.106",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "Wednesday 03-22\n\nSecurity consultant\nDownload version tracking per customer/group\nSingle sign on when using SiWorkspace through Sinet Switchboard\nSingle sign on to Sinet Switchboard\n\n\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "102.107",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "Robbie : rasuncion@merlincsi.com\nJacob: jholzschuh@merlincsi.com\nGilbert: gcarlson@merlincsi.com\nSamir: skuliev@merlincsi.com\nLev: lshamilov@merlincsi.com\nSpencer: spencervoorhees@merlincsi.com\nBryan: bsteer@merlincsi.com\nTom: tvoorhees@merlincsi.com\nLeon: lhavin@merlincsi.com\nMark Butcher: mark@uTasker.com\nIan: ian.whitehouse@xenthos.com.au\naron: "
+      }
+    ]
+  },
+  {
+    "nodeid": "102.106.121",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "data acquisition from Sinet field nodes. what form does it come in. how to place in database. "
+      },
+      {
+        "comment": "",
+        "snip": "Support ticketing system. Needs to support single sign on with OAuth2 and modification of user interface. Might also want supervisor support (ie group supervisor can view all tickets for that group)."
+      },
+      {
+        "comment": "",
+        "snip": "analytical widgets for dashboard."
+      },
+      {
+        "comment": "",
+        "snip": "map for dashboard"
+      },
+      {
+        "comment": "",
+        "snip": "passport and OAuth2"
+      },
+      {
+        "comment": "",
+        "snip": "Tying together authentication with Sinet field nodes, Sinet Switchboard and Sinet Portal."
+      }
+    ]
+  },
+  {
+    "nodeid": "102.106.122",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "is there a switchboard connector for ubuntu and mac?"
+      }
+    ]
+  },
+  {
+    "nodeid": "102.103.104.123",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "Monday 03-27\n\nGoogle Maps api, Endian switchboard api, Sinet Portal sds. Sinet diagram, server diagram.\n\n8.5 hrs"
+      },
+      {
+        "comment": "",
+        "snip": "Tuesday 03-28\n\nEndian switchboard api. Review zendesk and freshdesk.\n\n7.5 hrs"
+      },
+      {
+        "comment": "",
+        "snip": "Wednesday 03-29\n\nBuilt login page and setup Sinet Portal configuration.\n\n8hrs"
+      },
+      {
+        "comment": "",
+        "snip": "Thursday 03-30\n\nFinished Sinet Portal login page. Tested zendesk and kayako help desk services. \n\n8hrs\n"
+      },
+      {
+        "comment": "",
+        "snip": "Friday 03-31\n\nResearch help desk offerings. Get MS SQL Server linux install steps. Add modal to download, support and switchboard pages . Some other Sinet Portal work. Setup MerlinCSI-Ubuntu-DevServer01. Install MySql and SQL Server. Configure and test installs.\n\n8hrs\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "1.124",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "brew install node watchman exiftool yarn git"
+      },
+      {
+        "comment": "",
+        "snip": "brew update"
+      },
+      {
+        "comment": "",
+        "snip": "brew upgrade"
+      },
+      {
+        "comment": "after installing/updating yarn, fixes global installs",
+        "snip": "export PATH=\"$PATH:$HOME/.config/yarn/global/node_modules/.bin\""
+      }
+    ]
+  },
+  {
+    "nodeid": "76.125",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add -"
+      },
+      {
+        "comment": "",
+        "snip": "curl https://packages.microsoft.com/config/ubuntu/16.04/mssql-server.list | sudo tee /etc/apt/sources.list.d/mssql-server.list"
+      },
+      {
+        "comment": "",
+        "snip": "apt-get update\n"
+      },
+      {
+        "comment": "",
+        "snip": "apt-get install -y mssql-server"
+      },
+      {
+        "comment": "Sinet099)sql",
+        "snip": "/opt/mssql/bin/mssql-conf setup"
+      },
+      {
+        "comment": "",
+        "snip": "systemctl status mssql-server"
+      },
+      {
+        "comment": "",
+        "snip": "To allow remote connections, you may need to open the SQL Server TCP port on your firewall. The default SQL Server port is 1433."
+      },
+      {
+        "comment": "",
+        "snip": "sqlcmd -S 192.168.1.199 -U SA -P 'Sinet099)sql'"
+      }
+    ]
+  },
+  {
+    "nodeid": "102.103.104.126",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "Monday 04-03\n\nSql Server and MySql node client setup."
+      },
+      {
+        "comment": "",
+        "snip": "Tuesday 04-04\n\nSupport software research. Project review. Freshdesk test. "
+      },
+      {
+        "comment": "",
+        "snip": "Wednesday 04-05\n\nSupport page for Sinet Portal."
+      },
+      {
+        "comment": "",
+        "snip": "Thursday 04-06\n\nSupport page for Sinet Portal."
+      },
+      {
+        "comment": "",
+        "snip": "Friday 04-07\n\nSupport and download pages for Sinet Portal."
+      }
+    ]
+  },
+  {
+    "nodeid": "102.103.104.127",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "Monday 4-10\n\nSinet Portal, look into ssl certificates, add home page. "
+      },
+      {
+        "comment": "",
+        "snip": "Tuesday 4-11\n\nSinet Portal, ssl certificate.\n"
+      },
+      {
+        "comment": "",
+        "snip": "Wednesday 4-12\n\nSinet Portal, Switchboard docs, finish ssl activation. "
+      },
+      {
+        "comment": "",
+        "snip": "Thursday 4-13\n\nSwitchboard docs, deploy and test ssl on DevServer01. Sinet Portal"
+      },
+      {
+        "comment": "",
+        "snip": "Friday 4-14\n\nSinet Portal, tutorials for certificate install and also connect install and configure."
+      }
+    ]
+  },
+  {
+    "nodeid": "76.128",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "openssl req -new -newkey rsa:2048 -nodes -keyout sinet.key -out sinet.csr"
+      },
+      {
+        "comment": "",
+        "snip": "*.sinet.com"
+      },
+      {
+        "comment": "",
+        "snip": "Merlin CSI"
+      },
+      {
+        "comment": "",
+        "snip": "Poway"
+      },
+      {
+        "comment": "",
+        "snip": "California"
+      },
+      {
+        "comment": "",
+        "snip": "US"
+      },
+      {
+        "comment": "",
+        "snip": "BV3>MVAvsgUWECTwaxGsqqiC2nQjkVkiWbazTH,e"
+      },
+      {
+        "comment": "",
+        "snip": "-----BEGIN CERTIFICATE REQUEST-----\nMIIDBTCCAe0CAQAwgYQxCzAJBgNVBAYTAlVTMRMwEQYDVQQIDApDYWxpZm9ybmlh\nMQ4wDAYDVQQHDAVQb3dheTETMBEGA1UECgwKTWVybGluIENTSTEUMBIGA1UEAwwL\nKi5zaW5ldC5jb20xJTAjBgkqhkiG9w0BCQEWFm1zdGV2ZW5zQG1lcmxpbmNzaS5j\nb20wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDWRekVtT8Re8iRNmbI\nBixIv2aEJVI3ltDftCGfsHyACpQ6TvMoHu/xpOjONCZSBgQwik+1B0NxYyiW35ht\ncbrFTkYzSq9LdG0Gi9pLaLNpPLi09yfziMqrn+72QoK6ZH6sV1HwSRxW1jr3k1fu\ngpN0hsXdqj4tGRNA/T0Ac71LnuhRLnoOFNXlKSlzojtn0ITPftsS2kqhhejQSNkH\nEaR3m61lZ3usvPFbmwfiKNDGbdmeTJlLJGnLW4Vy1hHeZftcwrX5VNwKy+ns1vJu\nLANfNAfZet+WNMZR3cX0i6nxGcMTm/IuqKIEuHCgE6DL6Hn8K5LOSYVCRnsEyXVN\ns+UXAgMBAAGgOzAUBgkqhkiG9w0BCQIxBwwFU2luZXQwIwYJKoZIhvcNAQkHMRYM\nFEJBdmNXYy82ajJ0cUdMclVUYS9hMA0GCSqGSIb3DQEBCwUAA4IBAQA6V68GIMuf\nrU9PYJ11qoYa6Hbg9sx88xkKHdOQXQ4zGMJqnp5KgE9X/T084dEwejwAQdlm/jzD\nAbj5qjJH4YbF7gk2P5rZh+KvzDxOau5hYxSWr8+SYpbjFtisWUMvoIbjhYdeXyP6\n9OTtjoDYpAS154cpNZvrqLX5S9eVltPd4LYt7hQKJFSYcCgZ3FXHV7cvNxhF1/FG\nh6joWUjuT8AQXlF5ZbK10K0q4lmFJMNHl38xdKTvju17kQ0XxBD9imcPJxiLp7Uz\nIFqvyuYL+u6szgg+KJmQ2MlZdWR9Il3rp5zxCEGwnefVE7+qyKvBEGPYr014yaYn\n6YSmF+Sxv8Vb\n-----END CERTIFICATE REQUEST-----"
+      }
+    ]
+  },
+  {
+    "nodeid": "102.129",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cert install\n\ndownload cert\nopen folder\nright click on SinetCARoot.cer\nselect/click install\nexcept defaults or your choice\ndone\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "102.130",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "Add user/s give permissions manage devices, manage users\nCreate admin user group and add user/s as members with admin permissions\nCreate all device group\n  Add all customer devices as members\n  Add admin group as manager in permissions"
+      },
+      {
+        "comment": "Admin steps",
+        "snip": "Add users\nCreate one or more user groups\n  Add users in members tab as member or administrator\nCreate one or more device groups\nFor each device group add selected devices as members and selected user group as user in permissions"
+      },
+      {
+        "comment": "",
+        "snip": "Rexnord test admin rtadmin@kykas.com tester123$\n\nRexnord test user rtuser@kykas.com tester123$"
+      }
+    ]
+  },
+  {
+    "nodeid": "102.131",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "apt-get update"
+      },
+      {
+        "comment": "",
+        "snip": "apt-get upgrade"
+      },
+      {
+        "comment": "restart",
+        "snip": "sudo shutdown -r now"
+      },
+      {
+        "comment": "",
+        "snip": ""
+      },
+      {
+        "comment": "",
+        "snip": "mv ~/sinet.key /etc/nginx\n"
+      },
+      {
+        "comment": "",
+        "snip": "mv ~/f31eb975ed261662.crt /etc/nginx\n"
+      },
+      {
+        "comment": "",
+        "snip": "ls  /etc/nginx/sites-available"
+      },
+      {
+        "comment": "",
+        "snip": "rm -f  /etc/nginx/sites-available/default"
+      },
+      {
+        "comment": "",
+        "snip": "nano /etc/nginx/sites-available/multi.sinet.com"
+      },
+      {
+        "comment": "",
+        "snip": "ln -s /etc/nginx/sites-available/multi.sinet.com /etc/nginx/sites-enabled/multi.sinet.com"
+      },
+      {
+        "comment": "",
+        "snip": "service nginx restart\n"
+      },
+      {
+        "comment": "",
+        "snip": ""
+      },
+      {
+        "comment": "",
+        "snip": "pm2 start js/server.js"
+      },
+      {
+        "comment": "",
+        "snip": "pm2 restart js/server.js"
+      },
+      {
+        "comment": "",
+        "snip": ""
+      },
+      {
+        "comment": "",
+        "snip": "rm -rf node_modules"
+      },
+      {
+        "comment": "",
+        "snip": "npm install --production"
+      },
+      {
+        "comment": "",
+        "snip": ""
+      },
+      {
+        "comment": "",
+        "snip": "cd /var/www"
+      },
+      {
+        "comment": "",
+        "snip": "pm2 start pm2List.json"
+      },
+      {
+        "comment": "",
+        "snip": "pm2 stop pm2List.json"
+      },
+      {
+        "comment": "",
+        "snip": "pm2 restart pm2List.json"
+      },
+      {
+        "comment": "",
+        "snip": "pm2 list"
+      },
+      {
+        "comment": "",
+        "snip": "pm2 save"
+      },
+      {
+        "comment": "",
+        "snip": "pm2 startup ubuntu"
+      }
+    ]
+  },
+  {
+    "nodeid": "102.103.104.132",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "Monday 4-17\n\nSinet Portal, added admin setup intructions to the setup page. Tryout Reactd3 and Victory charting libraries. Setup Dev server for direct internet connection. Troubleshoot direct internet connection."
+      },
+      {
+        "comment": "",
+        "snip": "Tuesday 4-18\n\nSinet Portal, ssl cert, switchboard connect.\n"
+      },
+      {
+        "comment": "",
+        "snip": "Wednesday 4-19\n\nSwitchboard connect. SiSense. Endian router.\n"
+      },
+      {
+        "comment": "",
+        "snip": "Thursday 4-20\n\nTest switchboard connect, review server security, add ssh key for server login. \nPm2 autostart. "
+      },
+      {
+        "comment": "",
+        "snip": "Friday 4-21\n\nSiSense, ReactD3 charting, Victory charting, GoogleMaps. SinetPortal online."
+      }
+    ]
+  },
+  {
+    "nodeid": "76.133",
+    "snips": [
+      {
+        "comment": "logged in as user",
+        "snip": "ssh-keygen -t rsa\n"
+      },
+      {
+        "comment": "",
+        "snip": "mv ~/.ssh/id_rsa.pub ~/.ssh/authorized_keys\n"
+      },
+      {
+        "comment": "",
+        "snip": "chmod 600 ~/.ssh/authorized_keys\n"
+      },
+      {
+        "comment": "",
+        "snip": ""
+      },
+      {
+        "comment": "",
+        "snip": "- copy id_rsa to ~/.ssh/ on local device"
+      },
+      {
+        "comment": "",
+        "snip": "mkdir ~/.ssh"
+      },
+      {
+        "comment": "",
+        "snip": "chmod 700 ~/.ssh"
+      },
+      {
+        "comment": "",
+        "snip": "scp root@192.168.1.199:~/.ssh/id_rsa ~/.ssh/"
+      },
+      {
+        "comment": "",
+        "snip": "scp root@192.168.1.196:~/.ssh/id_rsa ~/.ssh/"
+      },
+      {
+        "comment": "",
+        "snip": ""
+      },
+      {
+        "comment": "turn off password authentication",
+        "snip": "nano /etc/ssh/sshd_config\n"
+      },
+      {
+        "comment": "",
+        "snip": "PasswordAuthentication no"
+      },
+      {
+        "comment": "",
+        "snip": " systemctl restart ssh\n"
+      },
+      {
+        "comment": "",
+        "snip": "id_rsa"
+      }
+    ]
+  },
+  {
+    "nodeid": "102.134",
+    "snips": [
+      {
+        "comment": "discover",
+        "snip": "ifconfig -a"
+      },
+      {
+        "comment": "",
+        "snip": "ifconfig eno1\n"
+      },
+      {
+        "comment": "add static ",
+        "snip": "nano /etc/network/interfaces"
+      },
+      {
+        "comment": "",
+        "snip": "auto eno1\niface eno1 inet static\n  address 68.15.17.245\n  netmask 255.255.255.0\n  gateway 68.15.17.241\n  dns-nameservers 68.105.28.16 68.105.29.16"
+      },
+      {
+        "comment": "",
+        "snip": "/etc/init.d/networking restart\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "102.103.104.135",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "Monday 4-24\n\nSinet Portal online. Docs for DevServer configuration. Team Server setup. Network security research. Setup dell t330 server."
+      },
+      {
+        "comment": "",
+        "snip": "Tuesday 4-25\n\nDeeper freshdesk testing. Modify Sinet Portal to handle ticket link backs. "
+      },
+      {
+        "comment": "",
+        "snip": "Wednesday 4-26\n\nGoogle Maps, Sinet Portal - fixed login alert and made switchboard visible only to admins. Wrote up Sinet Portal v1 description. Reviewed ubuntu setup docs. Reviewed BI software offerings."
+      },
+      {
+        "comment": "",
+        "snip": "Thursday 4-27\n\nReview SiSense, Sinet docs. Check website vulnerability. Setup T330 server."
+      },
+      {
+        "comment": "",
+        "snip": "Friday 4-28\n\nReview siWorkspace docs, research ssh tunnels. Research openVPN. "
+      }
+    ]
+  },
+  {
+    "nodeid": "102.103.136",
+    "snips": []
+  },
+  {
+    "nodeid": "102.103.136.137",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "Monday 5-01\n\nResearch iiot. Meet with Tom. Review dashboard pages. Implement delayed markers for google maps. Write dashboard page description. "
+      },
+      {
+        "comment": "",
+        "snip": "Tuesday 5-2\n\nReview iiot dashboards. Exchange T330 with nuc. Show Spencer SinetPortal features. Prepare Sinet dashboard description. Setup SinetPortal2."
+      },
+      {
+        "comment": "",
+        "snip": "Wednesday 5-3\n\nTroubleshoot nuc crash, update bios, reset defaults. SinetPortal2."
+      },
+      {
+        "comment": "",
+        "snip": "Thursday 5-4\n\nSinet Portal 2, wrap up project. Document setting up Visual Studio to work on the SinetPortal project. Clean up security issues. "
+      },
+      {
+        "comment": "",
+        "snip": "Friday 5-5\n\nMeet with Spencer to review Sinet Portal 1. Add new admin to Endian switchboard with api access and update Sinet Portal. Add a new login to switchboard and freshdesk for development. Remove all Merlin CSI proprietary."
+      }
+    ]
+  },
+  {
+    "nodeid": "22.138",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "find . -name \"*.js\" -exec bash -c 'mv \"$1\" \"${1%.js}\".ts' - '{}' \\;\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.138.139",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular1.x/Basic"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular1.x/BasicRedux\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular1.x/ReduxFetch\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular1.x/ReduxSocketIO\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.138.140",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular4.x/Basic\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular4.x/BasicRedux\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular4.x/GoogleMaps\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular4.x/jmsCommon\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular4.x/ReduxFetch\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular4.x/ReduxSocketIO\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.138.141",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular4.ts/Basic\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular4.ts/BasicRedux\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular4.ts/GoogleMaps\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular4.ts/jmsCommon\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular4.ts/LearningAngular4\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular4.ts/ReduxFetch\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Patterns/AngularPatterns/Angular4.ts/ReduxSocketIO\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.142",
+    "snips": []
+  },
+  {
+    "nodeid": "22.142.143",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "/Users/janaka/Kykas/wwwProjects/BasicID"
+      },
+      {
+        "comment": "",
+        "snip": "/Users/janaka/Kykas/wwwProjects/MastersDarshan"
+      },
+      {
+        "comment": "",
+        "snip": "/Users/janaka/Kykas/wwwProjects/Plantsigns"
+      }
+    ]
+  },
+  {
+    "nodeid": "22.142.144",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "/Users/janaka/Kykas/Projects/BergstromGardens"
+      },
+      {
+        "comment": "",
+        "snip": "~/Kykas/Projects/Clippets"
+      },
+      {
+        "comment": "",
+        "snip": "/Users/janaka/Kykas/Projects/CodeViewer"
+      },
+      {
+        "comment": "",
+        "snip": "/Users/janaka/Kykas/Projects/JMarkStevens"
+      },
+      {
+        "comment": "",
+        "snip": "/Users/janaka/Kykas/Projects/jmsExamples"
+      },
+      {
+        "comment": "",
+        "snip": "/Users/janaka/Kykas/Projects/PalmApp"
+      },
+      {
+        "comment": "",
+        "snip": "/Users/janaka/Kykas/Projects/PalmInfo"
+      }
+    ]
+  }
+]

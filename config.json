@@ -1,0 +1,15 @@
+{
+  "darwin": {
+    "dataRoot": "/Kykas/ngProjects/Clippets/data/"
+  },
+  "darwinApp": {
+    "dataRoot": "/OneDrive/ClippetsData/"
+  },
+  "linux": {
+    "dataRoot": "/var/www/Clippets/data/"
+  },
+  "win32": {
+    "dataRoot": "K:/Projects/Clippets/data/"
+  },
+  "winProjectRoot": "K:/Projects/Clippets"
+}

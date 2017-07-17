@@ -1,0 +1,44 @@
+<ng-template #progressBar let-menuList>
+  <div
+    id="countSty"
+    class="countSty"
+    [style.background-color]="inData.countColor"
+    [style.height.em]="inData.height"
+  >
+    <div id="indexSpacer" class="indexSpacer" [style.height.em]="inData.height * .25"></div>
+    <div
+      id="indexSty"
+      class="indexSty"
+      [style.background-color]="inData.indexColor"
+      [style.height.em]="inData.height * .5"
+      [style.width.%]="percentage"
+    ></div>
+  </div>
+</ng-template>
+<div class="rootDiv" [ngSwitch]="inData.position">
+  <div id="JProgressBar" class="progressSty FlexBox" *ngSwitchCase="'after'">
+    <ng-container *ngTemplateOutlet="progressBar"></ng-container>
+    &nbsp;<span class="numberSty">{{index}}&nbsp;/&nbsp;{{inData.count}}</span>
+  </div>
+  <div id="JProgressBar" class="progressSty FlexBox" *ngSwitchCase="'before'">
+    <span class="numberSty">{{index}}&nbsp;/&nbsp;{{inData.count}}&nbsp;</span>
+    <ng-container *ngTemplateOutlet="progressBar"></ng-container>
+  </div>
+  <div id="JProgressBar" class="progressSty FlexBox" *ngSwitchCase="'beforenafter'">
+    <span class="numberSty">{{index}}&nbsp;</span>
+    <ng-container *ngTemplateOutlet="progressBar"></ng-container>
+    &nbsp;<span class="numberSty">{{inData.count}}</span>
+  </div>
+  <div id="JProgressBar" class="progressSty" *ngSwitchCase="'none'">
+    <ng-container *ngTemplateOutlet="progressBar"></ng-container>
+  </div>
+  <div id="JProgressBar" class="progressSty" *ngSwitchDefault>
+    <ng-container *ngTemplateOutlet="progressBar"></ng-container>
+    <br />
+    <div [ngStyle]="{'text-align': 'center', width: '100%'}">
+      <div class="centerSty" [style.font-size.em]="inData.height">
+        {{index}}&nbsp;/&nbsp;{{inData.count}}
+      </div>
+    </div>
+  </div>
+</div>
