@@ -1,8 +1,0 @@
-<div id="jms-list" class="rootDiv" [ngStyle]="inData.rootStyle" [ngSwitch]="inData.type">
-  <div *ngSwitchCase="'span'">
-    <span class="lineStyle" *ngFor="let item of inData.list;" [ngStyle]="inData.lineStyle">{{item}} </span>
-  </div>
-  <div *ngSwitchDefault>
-    <div class="lineStyle" *ngFor="let item of inData.list;" [ngStyle]="inData.lineStyle">{{item}} </div>
-  </div>
-</div>
