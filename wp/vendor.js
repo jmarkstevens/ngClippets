@@ -1,12 +1,15 @@
-import '@angular-redux/store';
-
 import '@angular/common';
+import '@angular/compiler';
 import '@angular/core';
 import '@angular/platform-browser';
 import '@angular/platform-browser-dynamic';
 
-import 'core-js/es6';
-import 'core-js/es7/reflect';
 import 'reflect-metadata';
 import 'rxjs';
-import 'zone.js';
+
+import '@angular-redux/store';
+import 'lodash';
+import 'redux';
+import 'redux-logger';
+import 'redux-thunk';
+import 'traverse';

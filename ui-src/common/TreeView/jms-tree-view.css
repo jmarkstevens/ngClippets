@@ -4,13 +4,14 @@
 .listRow {
   display: flex;
   margin: 5px 0;
-  white-space: nowrap;
 }
 .titleDiv {
   color: PaleGoldenrod;
+  cursor: pointer;
 }
 
 .showChildren {
+  cursor: pointer;
   height: 1em;
   margin-right: .6em;
   width: 1em;

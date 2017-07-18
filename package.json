@@ -14,9 +14,9 @@
   },
   "scripts": {
     "start": "electron .",
-    "ww": "webpack --progress --profile --colors --env.noMinimize --watch",
-    "nw": "webpack --progress --profile --colors --env.noMinimize",
-    "build": "webpack --progress --profile --colors --env.production"
+    "ww": "webpack --config wp/wp.config.js --progress --profile --colors --env.noMinimize --watch",
+    "nw": "webpack --config wp/wp.config.js --progress --profile --colors --env.noMinimize",
+    "build": "webpack --config wp/wp.config.js --progress --profile --colors --env.production"
   },
   "dependencies": {
     "@angular-redux/store": "latest",
@@ -25,24 +25,23 @@
     "@angular/core": "^4.0.0",
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
-    "@types/angular": "^1.5.16",
-    "@types/node": "^6.0.45",
+    "core-js": "latest",
     "lodash": "latest",
     "redux": "latest",
     "redux-logger": "latest",
     "redux-thunk": "latest",
-    "traverse": "latest"
+    "reflect-metadata": "latest",
+    "rxjs": "latest",
+    "traverse": "latest",
+    "zone.js": "0.8.12"
   },
   "devDependencies": {
-    "angular2-template-loader": "latest",
-    "awesome-typescript-loader": "latest",
     "babel-core": "latest",
     "babel-loader": "latest",
     "babel-plugin-transform-decorators-legacy": "latest",
     "babel-preset-angular2": "latest",
     "babel-preset-es2015": "latest",
     "babel-preset-stage-0": "latest",
-    "core-js": "latest",
     "css-loader": "latest",
     "extract-text-webpack-plugin": "latest",
     "file-loader": "latest",
@@ -50,11 +49,7 @@
     "html-webpack-plugin": "latest",
     "loader-utils": "latest",
     "raw-loader": "latest",
-    "reflect-metadata": "latest",
-    "rxjs": "latest",
     "style-loader": "latest",
-    "typescript": "latest",
-    "webpack": "latest",
-    "zone.js": "^0.8.4"
+    "webpack": "latest"
   }
 }

@@ -5,15 +5,9 @@ const config = require('../../config.json');
 
 let configRoot;
 switch (process.platform) {
-  case 'darwin':
-    configRoot = process.env.HOME + config.darwin.dataRoot;
-    break;
-  case 'linux':
-    configRoot = config.linux.dataRoot;
-    break;
-  case 'win32':
-    configRoot = process.env.USERPROFILE + config.win32.dataRoot;
-    break;
+  case 'darwin': configRoot = process.env.HOME + config.darwin; break;
+  case 'linux': configRoot = config.linux; break;
+  case 'win32': configRoot = process.env.USERPROFILE + config.win32; break;
 }
 
 const rootDataPath = configRoot;
