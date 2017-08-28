@@ -3,14 +3,14 @@ import * as apiActions from '../api/api.Actions';
 export function snipCommentChanged(comment) {
   return (dispatch, getState) => {
     dispatch({type: 'SnipCommentChanged', comment});
-    dispatch({type: 'ApiSetSnipData', data: getState().snipState.allSnips});
+    dispatch(apiActions.apiSetSnipData(getState().snipState.allSnips));
   };
 }
 
 export function snipSnipChanged(snip) {
   return (dispatch, getState) => {
     dispatch({type: 'SnipSnipChanged', snip});
-    dispatch({type: 'ApiSetSnipData', data: getState().snipState.allSnips});
+    dispatch(apiActions.apiSetSnipData(getState().snipState.allSnips));
   };
 }
 
@@ -34,7 +34,7 @@ export function snipActions(action) {
         case 'moveDown': dispatch({type: 'MoveSnipDown'}); break;
         case 'remove': dispatch({type: 'RemoveSnip'}); break;
       }
-      dispatch({type: 'ApiSetSnipData', data: getState().snipState.allSnips});
+      dispatch(apiActions.apiSetSnipData(getState().snipState.allSnips));
     }
   };
 }

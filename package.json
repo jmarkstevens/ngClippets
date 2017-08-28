@@ -26,6 +26,7 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "core-js": "latest",
+    "electron": "latest",
     "lodash": "latest",
     "redux": "latest",
     "redux-logger": "latest",

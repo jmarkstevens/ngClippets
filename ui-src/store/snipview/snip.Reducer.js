@@ -45,10 +45,8 @@ function _moveSnipItem(action, _snipData) {
 function _newTreeNode(newNodeID, _snipData) {
   let newSnips = {nodeid: newNodeID, snips: []};
   _snipData.allSnips.push(newSnips);
-  let snipsRecord = lodash.find(_snipData.allSnips, {nodeid: '001'});
-  let snipsIndex = lodash.indexOf(_snipData.allSnips, snipsRecord);
 
-  snipsRecord = lodash.find(_snipData.allSnips, {nodeid: newNodeID});
+  const snipsRecord = lodash.find(_snipData.allSnips, {nodeid: newNodeID});
   _snipsIndex = lodash.indexOf(_snipData.allSnips, snipsRecord);
   if (snipsRecord.snips.length < 1) _snipData.currentSnips = [{snip: '', comment: ''}];
   else _snipData.currentSnips = snipsRecord.snips;

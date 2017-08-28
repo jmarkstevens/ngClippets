@@ -1,10 +1,13 @@
-import {apiSetTreeData, apiSetTreeDataState} from '../api/api.Actions';
+import {apiSetSnipData, apiSetTreeData, apiSetTreeDataState} from '../api/api.Actions';
 
 export function saveTreeNew(node, location) {
   return (dispatch, getState) => {
     dispatch({type: 'SaveTreeNew', node, location});
     dispatch(apiSetTreeData(getState().treeState.treeData));
-    dispatch(apiSetTreeDataState(getState().treeState.tvState));
+    const tvState = getState().treeState.tvState;
+    dispatch(apiSetTreeDataState(tvState));
+    dispatch({type: 'NewTreeNode', nodeid: tvState.selected});
+    dispatch(apiSetSnipData(getState().snipState.allSnips));
   };
 }
 
@@ -22,6 +25,7 @@ export function saveTreeState(data) {
     dispatch({type: 'SelectTreeNode', selectedId: data.selected});
   };
 }
+
 export function setCurrentItem(item) { return {type: 'SetCurrentItem', item}; }
 export function treeActions(action, node) {
   return (dispatch, getState) => {
