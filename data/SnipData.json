@@ -1,5 +1,9 @@
 [
   {
+    "nextid": 145,
+    "nodeid": "001"
+  },
+  {
     "nodeid": "1",
     "snips": [
       {
@@ -752,22 +756,6 @@
       },
       {
         "comment": "",
-        "snip": "this is the default new"
-      },
-      {
-        "comment": "",
-        "snip": "this is a new after"
-      },
-      {
-        "comment": "default",
-        "snip": "this is a default paste"
-      },
-      {
-        "comment": "",
-        "snip": "this is a paste after"
-      },
-      {
-        "comment": "",
         "snip": "cd K:/Projects/ReactPatterns/React.12/ReFluxWebSocket"
       },
       {
@@ -777,10 +765,6 @@
       {
         "comment": "",
         "snip": "cd K:/Projects/ReactPatterns/React.13/ReFluxWebSocket"
-      },
-      {
-        "comment": "",
-        "snip": "cd K:/Projects/ReactPatterns/React.14/ReFluxElectron"
       }
     ]
   },
@@ -884,10 +868,6 @@
       {
         "comment": "",
         "snip": "cd K:/Projects/ReactPatterns/React.14/DragAndDrop"
-      },
-      {
-        "comment": "tab key moves on with changes saved\n",
-        "snip": "one more time with some change with esc"
       },
       {
         "comment": "",
@@ -1308,7 +1288,7 @@
     "snips": [
       {
         "comment": "",
-        "snip": "cd /var/www/CodeViewer\n"
+        "snip": "cd /var/www/ngCodeViewer\n"
       },
       {
         "comment": "",
@@ -1338,15 +1318,15 @@
     "snips": [
       {
         "comment": "",
-        "snip": "apt update"
+        "snip": "apt update\n"
       },
       {
         "comment": "",
-        "snip": "apt upgrade"
+        "snip": "apt upgrade\n"
       },
       {
         "comment": "restart",
-        "snip": "sudo shutdown -r now"
+        "snip": "sudo shutdown -r now\n"
       },
       {
         "comment": "",
@@ -1390,7 +1370,7 @@
       },
       {
         "comment": "",
-        "snip": "npm install --production"
+        "snip": "npm install --production\n"
       },
       {
         "comment": "",
@@ -1398,31 +1378,31 @@
       },
       {
         "comment": "",
-        "snip": "cd /var/www"
+        "snip": "cd /var/www\n"
       },
       {
         "comment": "",
-        "snip": "pm2 start pm2List.json"
+        "snip": "pm2 start pm2List.json\n"
       },
       {
         "comment": "",
-        "snip": "pm2 stop pm2List.json"
+        "snip": "pm2 stop pm2List.json\n"
       },
       {
         "comment": "",
-        "snip": "pm2 restart pm2List.json"
+        "snip": "pm2 restart pm2List.json\n"
       },
       {
         "comment": "",
-        "snip": "pm2 list"
+        "snip": "pm2 list\n"
       },
       {
         "comment": "",
-        "snip": "pm2 save"
+        "snip": "pm2 save\n"
       },
       {
         "comment": "",
-        "snip": "pm2 startup ubuntu"
+        "snip": "pm2 startup ubuntu\n"
       }
     ]
   },
@@ -2738,15 +2718,15 @@
     "snips": [
       {
         "comment": "",
-        "snip": "/Users/janaka/Kykas/wwwProjects/BasicID"
+        "snip": "cd /Users/janaka/Kykas/wwwProjects/BasicID\n"
       },
       {
         "comment": "",
-        "snip": "/Users/janaka/Kykas/wwwProjects/MastersDarshan"
+        "snip": "cd /Users/janaka/Kykas/wwwProjects/MastersDarshan\n"
       },
       {
         "comment": "",
-        "snip": "/Users/janaka/Kykas/wwwProjects/Plantsigns"
+        "snip": "cd /Users/janaka/Kykas/wwwProjects/Plantsigns\n"
       }
     ]
   },
@@ -2755,32 +2735,109 @@
     "snips": [
       {
         "comment": "",
-        "snip": "/Users/janaka/Kykas/Projects/BergstromGardens"
+        "snip": "cd /Users/janaka/Kykas/Projects/BergstromGardens\n"
       },
       {
         "comment": "",
-        "snip": "~/Kykas/Projects/Clippets"
+        "snip": "cd ~/Kykas/Projects/Clippets\n"
       },
       {
         "comment": "",
-        "snip": "/Users/janaka/Kykas/Projects/CodeViewer"
+        "snip": "cd /Users/janaka/Kykas/Projects/CodeViewer\n"
       },
       {
         "comment": "",
-        "snip": "/Users/janaka/Kykas/Projects/JMarkStevens"
+        "snip": "cd /Users/janaka/Kykas/Projects/JMarkStevens\n"
       },
       {
         "comment": "",
-        "snip": "/Users/janaka/Kykas/Projects/jmsExamples"
+        "snip": "cd /Users/janaka/Kykas/Projects/jmsExamples\n"
       },
       {
         "comment": "",
-        "snip": "/Users/janaka/Kykas/Projects/PalmApp"
+        "snip": "cd /Users/janaka/Kykas/Projects/PalmApp\n"
       },
       {
         "comment": "",
-        "snip": "/Users/janaka/Kykas/Projects/PalmInfo"
+        "snip": "cd /Users/janaka/Kykas/Projects/PalmInfo\n"
       }
     ]
+  },
+  {
+    "nodeid": "22.142.145",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ngClippets\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ngCodeViewer\n"
+      },
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Projects/ngPalmInfo\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "145",
+    "snips": []
+  },
+  {
+    "nodeid": "145.146",
+    "snips": [
+      {
+        "comment": "family code",
+        "snip": "LTQ7F\nBYZQ9"
+      },
+      {
+        "comment": "login",
+        "snip": "rx@jmarkstevens.com\nrx0990"
+      },
+      {
+        "comment": "",
+        "snip": "adb reverse tcp:8081 tcp:8081\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "145.147",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "cd /Users/janaka/Kykas/Dthera/reminx-native-family\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "145.148",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "Script: reward photo not appearing (#208)\n\n-the container this is displayed in is called \"Rachel.js\"\n-the component that the image is in is 'ChatBubble.js'\n-check the messageList in redux to see what is being passed back from the server, you will see the url of the photo in there.\n\n"
+      }
+    ]
+  },
+  {
+    "nodeid": "149",
+    "snips": []
+  },
+  {
+    "nodeid": "149.150",
+    "snips": [
+      {
+        "comment": "",
+        "snip": "So what goes here?"
+      }
+    ]
+  },
+  {
+    "nodeid": "149.151",
+    "snips": []
+  },
+  {
+    "nodeid": "149.152",
+    "snips": []
   }
 ]

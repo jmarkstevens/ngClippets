@@ -1,6 +1,6 @@
 {
-  "darwin": "/Kykas/ngProjects/ngClippets/data/",
-  "darwinApp": "/OneDrive/ClippetsData/",
+  "darwinApp": "/Kykas/Projects/ngClippets/data/",
+  "darwin": "/Google Drive/Kykas/ClippetsData/",
   "linux": "/var/www/Clippets/data/",
   "win32": "K:/Projects/Clippets/data/"
 }

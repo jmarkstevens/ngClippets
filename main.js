@@ -1,16 +1,21 @@
-'use strict';
 
-const {app, BrowserWindow, ipcMain} = require('electron');
-const url = require('url');
+const { app, BrowserWindow, ipcMain } = require('electron');
 const fs = require('fs');
 
 const config = require('./config.json');
 
 let configRoot = '';
 switch (process.platform) {
-  case 'darwin': configRoot = process.env.HOME + config.darwin; break;
-  case 'linux': configRoot = config.linux; break;
-  case 'win32': configRoot = process.env.USERPROFILE + config.win32; break;
+  case 'darwin':
+    configRoot = process.env.HOME + config.darwin;
+    break;
+  case 'linux':
+    configRoot = config.linux;
+    break;
+  case 'win32':
+    configRoot = process.env.USERPROFILE + config.win32;
+    break;
+  default: break;
 }
 
 const rootDataPath = configRoot;
@@ -18,21 +23,21 @@ const rootDataPath = configRoot;
 require('./js/mainipc.js')(ipcMain);
 
 let mainWindow = null;
-let mainWindowOptions = {
+const mainWindowOptions = {
   icon: './ui-dist/img/Clippets1.ico',
-  title: 'Clippets'
+  title: 'Clippets',
 };
 
-app.on('window-all-closed', function() {
+app.on('window-all-closed', () => {
   app.quit();
 });
 
-app.on('ready', function() {
+app.on('ready', () => {
   mainWindow = new BrowserWindow(mainWindowOptions);
 
-  let windowStatePath = rootDataPath + 'windowstate.json';
+  const windowStatePath = `${rootDataPath}windowstate.json`;
   let windowState = {};
-  let jsonReadCallBack = function(err, data) {
+  const jsonReadCallBack = (err, data) => {
     if (err) console.log('error opening windowstate');
     else {
       windowState = JSON.parse(data.toString());
@@ -41,17 +46,18 @@ app.on('ready', function() {
     }
   };
   fs.readFile(windowStatePath, jsonReadCallBack);
-  if (true) {
-    let auguryPath = '/Users/janaka/Library/Application Support/Google/Chrome/Profile 1/Extensions/elgalmkoelokbchhkhacckoklkejnhcd/1.14.0_0';
+  const useAugury = 0;
+  if (useAugury) {
+    const auguryPath = '/Users/janaka/Library/Application Support/Google/Chrome/Profile 1/Extensions/elgalmkoelokbchhkhacckoklkejnhcd/1.14.0_0';
     BrowserWindow.addDevToolsExtension(auguryPath);
   }
 
-  mainWindow.loadURL('file://' + __dirname + '/ui-dist/index.html');
+  mainWindow.loadURL(`file://${__dirname}/ui-dist/index.html`);
 
-  mainWindow.on('close', function() {
+  mainWindow.on('close', () => {
     windowState.size = mainWindow.getSize();
     windowState.position = mainWindow.getPosition();
-    let writeFileCallBack = function(err) {
+    const writeFileCallBack = (err) => {
       if (err) console.log('error saving windowstate.json file ');
       mainWindow = null;
     };

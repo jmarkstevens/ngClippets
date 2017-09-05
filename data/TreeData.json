@@ -128,8 +128,15 @@
         "children": [
           {
             "children": null,
-            "nodeid": "22.142.144",
+            "nodeid": "22.142.145",
             "selected": true,
+            "title": "Angular Projects",
+            "type": "dev"
+          },
+          {
+            "children": null,
+            "nodeid": "22.142.144",
+            "selected": false,
             "title": "React Projects",
             "type": "dev"
           },
@@ -279,6 +286,31 @@
   {
     "children": [
       {
+        "children": null,
+        "nodeid": "149.150",
+        "title": "Angular 4",
+        "type": "dev"
+      },
+      {
+        "children": null,
+        "nodeid": "149.151",
+        "title": "React",
+        "type": "dev"
+      },
+      {
+        "children": null,
+        "nodeid": "149.152",
+        "title": "React Native",
+        "type": "dev"
+      }
+    ],
+    "nodeid": "149",
+    "title": "Frameworks",
+    "type": "dev"
+  },
+  {
+    "children": [
+      {
         "children": [],
         "nodeid": "27.28",
         "selected": false,
@@ -344,7 +376,7 @@
         "type": "dev"
       }
     ],
-    "closed": false,
+    "closed": true,
     "nodeid": "12",
     "selected": false,
     "title": "Deployment",
@@ -373,13 +405,6 @@
             "nodeid": "53.59.60",
             "selected": false,
             "title": "BasicID",
-            "type": "dev"
-          },
-          {
-            "children": [],
-            "nodeid": "53.59.61",
-            "selected": false,
-            "title": "Clippets",
             "type": "dev"
           },
           {
@@ -580,6 +605,31 @@
     "nodeid": "102",
     "selected": false,
     "title": "Merlin CSI",
+    "type": "dev"
+  },
+  {
+    "children": [
+      {
+        "children": [],
+        "nodeid": "145.148",
+        "title": "Bugs",
+        "type": "dev"
+      },
+      {
+        "children": [],
+        "nodeid": "145.146",
+        "title": "Setup",
+        "type": "sys"
+      },
+      {
+        "children": [],
+        "nodeid": "145.147",
+        "title": "cd",
+        "type": ""
+      }
+    ],
+    "nodeid": "145",
+    "title": "Dthera",
     "type": "dev"
   },
   {
